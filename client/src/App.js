@@ -4,7 +4,8 @@ import './App.css';
 import axios from 'axios';
 import Login from './Login'
 import Signup from './Signup';
-import {UserProfile} from './UserProfile'
+import {UserProfile} from './UserProfile';
+import Home from './Home';
 
 class App extends Component {
   constructor(props) {
@@ -96,7 +97,7 @@ class App extends Component {
         </Router>
       )
     }
-    
+
   }
 }
 
