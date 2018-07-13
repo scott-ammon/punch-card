@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import MenuAppBar from './MenuAppBar'
 
 class Login extends Component {
   constructor(props) {
@@ -45,6 +46,7 @@ class Login extends Component {
 
   render() {
     return(
+      <MenuAppBar />
       <div>
         <p>{(this.state.response) ? this.state.response.message : ''}</p>
         <form onSubmit={this.handleSubmit}>
