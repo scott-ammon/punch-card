@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import MenuAppBar from './MenuAppBar'
 
 class Signup extends Component {
   constructor(props) {
@@ -59,6 +60,7 @@ class Signup extends Component {
 
   render() {
     return(
+      <MenuAppBar />
       <div>
         <p>{(this.state.response) ? this.state.response.message : ''}</p>
         <form onSubmit={this.handleSubmit}>
