@@ -79,25 +79,15 @@ class App extends Component {
 
   render() {
     let user = this.state.user
-    if(user) {
-      return (
-      <div className="App">
-        <UserProfile user={this.state.user} logout={this.logout} />
-        <a onClick={this.handleClick}> Test the protected route</a>
-        <p>{this.state.lockedResult}</p>
-      </div>
-      );
-    } else {
       return (
         <Router>
           <div className="App">
+            <Route exact path="/home" component = {() => <Home />} />
             <Route exact path="/signup" component = {() => <Signup liftToken={this.liftTokenToState} />} />
-            <Login liftToken={this.liftTokenToState} />
+            <Route exact path="/login" component = {() => <Login liftToken={this.liftTokenToState} />} />
           </div>
         </Router>
       )
-    }
-
   }
 }
 
