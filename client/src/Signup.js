@@ -26,23 +26,35 @@ class Signup extends Component {
   // POST to backend '/auth/signup' to add a new user
   handleSubmit(e) {
     e.preventDefault()
-    axios.post('/auth/signup', {
-      name: this.state.name,
-      email: this.state.email,
-      password: this.state.password
-    }).then(result => {
-      if(result.data.hasOwnProperty('error')) {
-        this.setState({
-          response: result.data
-        })
-      } else {
-        localStorage.setItem('mernToken', result.data.token)
-        this.props.liftToken(result.data)
-        this.setState({
-          response: null
-        })
-      }
-    })
+    if (this.state.password.length < 8 || this.state.password > 99) {
+      // Password does not meet length requirements
+      this.setState({
+        error: {
+          type: 'auth_error',
+          status: 401,
+          message: 'Password must be between 8 and 99 characters.'
+        },
+        password: ''
+      })
+    } else {
+      axios.post('/auth/signup', {
+        name: this.state.name,
+        email: this.state.email,
+        password: this.state.password
+      }).then(result => {
+        if(result.data.hasOwnProperty('error')) {
+          this.setState({
+            response: result.data
+          })
+        } else {
+          localStorage.setItem('mernToken', result.data.token)
+          this.props.liftToken(result.data)
+          this.setState({
+            response: null
+          })
+        }
+      })
+    }
   }
 
   render() {
