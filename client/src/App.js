@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {BrowserRouter as Router, Route} from "react-router-dom";
 import './App.css';
 import axios from 'axios';
 import Login from './Login'
@@ -87,10 +88,12 @@ class App extends Component {
       );
     } else {
       return (
-        <div className="App">
-          <Signup liftToken={this.liftTokenToState} />
-          <Login liftToken={this.liftTokenToState} />
-        </div>
+        <Router>
+          <div className="App">
+            <Route exact path="/signup" component = {() => <Signup liftToken={this.liftTokenToState} />} />
+            <Login liftToken={this.liftTokenToState} />
+          </div>
+        </Router>
       )
     }
     
