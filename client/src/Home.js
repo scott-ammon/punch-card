@@ -24,7 +24,7 @@ class Home extends Component {
         </p>
         <input value="search" type="submit" onChange={this.handleChange} />
         <button type="submit">Search</button>
-        <Map />
+        <Map mapboxKey={this.props.mapboxKey}/>
       </div>
     )
   }

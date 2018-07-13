@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import mapboxgl from 'mapbox-gl'
-mapboxgl.accessToken = '';
 
 class Map extends React.Component {
   componentDidMount() {
+    mapboxgl.accessToken = this.props.mapboxKey;
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
       style: 'mapbox://styles/scottammon/cjjfwon001qvd2rthricow465',

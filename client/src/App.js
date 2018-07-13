@@ -13,7 +13,8 @@ class App extends Component {
     this.state = {
       token: '',
       user: null,
-      lockedResult: ''
+      lockedResult: '',
+      mapboxKey: process.env.REACT_APP_MAPBOX
     }
     this.liftTokenToState = this.liftTokenToState.bind(this)
     this.logout = this.logout.bind(this)
@@ -82,7 +83,7 @@ class App extends Component {
       return (
         <Router>
           <div className="App">
-            <Route exact path="/home" component = {() => <Home />} />
+            <Route exact path="/home" component = {() => <Home mapboxKey={this.state.mapboxKey}/>} />
             <Route exact path="/signup" component = {() => <Signup liftToken={this.liftTokenToState} />} />
             <Route exact path="/login" component = {() => <Login liftToken={this.liftTokenToState} />} />
           </div>

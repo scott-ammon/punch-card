@@ -60,7 +60,6 @@ class Signup extends Component {
 
   render() {
     return(
-      <MenuAppBar />
       <div>
         <p>{(this.state.response) ? this.state.response.message : ''}</p>
         <form onSubmit={this.handleSubmit}>
