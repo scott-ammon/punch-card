@@ -6,6 +6,7 @@ import Login from './Login'
 import Signup from './Signup';
 import {UserProfile} from './UserProfile';
 import Home from './Home';
+import MenuAppBar from './MenuAppBar';
 
 class App extends Component {
   constructor(props) {
@@ -80,10 +81,13 @@ class App extends Component {
 
   render() {
     let user = this.state.user
+    // render home component upon landing on the site
+
       return (
         <Router>
           <div className="App">
-            <Route exact path="/home" component = {() => <Home mapboxKey={this.state.mapboxKey}/>} />
+            <MenuAppBar />
+            <Route exact path="/" component = {() => <Home mapboxKey={this.state.mapboxKey}/>} />
             <Route exact path="/signup" component = {() => <Signup liftToken={this.liftTokenToState} />} />
             <Route exact path="/login" component = {() => <Login liftToken={this.liftTokenToState} />} />
           </div>
