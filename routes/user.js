@@ -3,6 +3,22 @@ const router = express.Router();
 const Restaurant = require('../models/Restaurant');
 const Card = require('../models/Card');
 
-
+router.post("/cards", (req, res) => {
+    User.findOne({email: "x@x.com"}, function(err, user) {
+      console.log(user);
+      Card.create({
+          punches: 0,
+          reqPunches: 4
+      }, function(err, card) {
+          console.log(card);
+          user.cards.push(card._id)
+          user.save(function(err) {
+              if (err) {
+                  console.log(err);
+              }
+          })
+      })  
+    })
+})
 
 module.exports = router;
