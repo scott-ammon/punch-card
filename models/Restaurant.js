@@ -6,6 +6,7 @@ const restaurantSchema = new mongoose.Schema({
   name: String,
   address: String,
   reward: String,
+  genre: String,
   lat: Number,
   lng: Number,
   rewardCode: String,
