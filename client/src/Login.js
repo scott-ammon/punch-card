@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import MenuAppBar from './MenuAppBar'
+import MenuAppBar from './MenuAppBar';
 
 class Login extends Component {
   constructor(props) {
@@ -47,6 +47,7 @@ class Login extends Component {
   render() {
     return(
       <div>
+        <MenuAppBar />
         <p>{(this.state.response) ? this.state.response.message : ''}</p>
         <form onSubmit={this.handleSubmit}>
           Email: <input type="email" name="email" value={this.state.email} onChange={this.handleInputChange} /><br />

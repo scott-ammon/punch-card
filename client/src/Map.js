@@ -17,14 +17,11 @@ class Map extends React.Component {
   }
 
   render() {
-    const style = {
-      position: 'absolute',
-      top: 0,
-      bottom: 0,
-      width: '100%'
-    };
-
-    return <div style={style} ref={el => this.mapContainer = el} />;
+    return (
+      <div class="row">
+        <div className="map col xl12 l12 m12 s12" id="map" ref={el => this.mapContainer = el}></div>
+      </div>
+    );
   }
 }
 
