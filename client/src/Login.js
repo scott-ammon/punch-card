@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import MenuAppBar from './MenuAppBar';
+import TextField from '@material-ui/core/TextField';
 
 class Login extends Component {
   constructor(props) {
@@ -50,8 +51,25 @@ class Login extends Component {
         <MenuAppBar />
         <p>{(this.state.response) ? this.state.response.message : ''}</p>
         <form onSubmit={this.handleSubmit}>
-          Email: <input type="email" name="email" value={this.state.email} onChange={this.handleInputChange} /><br />
-          Password: <input type="password" name="password" value={this.state.password} onChange={this.handleInputChange} />
+          <TextField
+              id="email"
+              name="email"
+              label="Email"
+              className="emailField"
+              value={this.state.email}
+              onChange={this.handleInputChange}
+              margin="normal"
+            /><br />
+          <TextField
+            id="password"
+            name="password"
+            label="password"
+            type="password"
+            className="passwordField"
+            value={this.state.password}
+            onChange={this.handleInputChange}
+            margin="normal"
+          />
           <button type="submit" value="Log In">Log In</button>
         </form>
       </div>
