@@ -17,7 +17,8 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true , "You must enter a password."]
-  }
+  },
+  cards: [{type: mongoose.Schema.Types.ObjectId, ref: 'Card'}]
 });
 
 // Returns user object without password (for token)

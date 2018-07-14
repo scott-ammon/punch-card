@@ -11,6 +11,7 @@ app.use(bp.json());
 app.use(bp.urlencoded({extended: false}));
 app.use(express.static(__dirname + '/client/build'));
 app.use('/auth', require('./routes/auth'));
+app.use('/user', require('./routes/user'));
 app.use('/locked', expressJWT({secret: process.env.JWT_SECRET}).unless({method: "POST"}), require('./routes/locked'));
 
 mongoose.connect('mongodb://localhost/jwtAuth');
