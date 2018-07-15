@@ -8,4 +8,10 @@ router.get("/", (req, res) => {
     })
 })
 
+router.get("/:id", (req, res) => {
+    Restaurant.findOne({_id: req.params.id}, function(err, restaurant) {
+      res.json({restaurant});
+    })
+})
+
 module.exports = router;
