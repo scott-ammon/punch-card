@@ -91,6 +91,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.restaurants)
     let user = this.state.user
       return (
         <Router>

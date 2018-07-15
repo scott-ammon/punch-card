@@ -8,9 +8,10 @@ class Restaurant extends Component {
     }
   }
   render() {
+    console.log(this.props);
     return (
       <div className="">
-        <h1>{this.state.restaurants[0].name}}</h1>
+        <h1>{this.props.restaurants[0].name}</h1>
         <div>Image for Rest here.</div>
         <div>Map here.</div>
         <h4>Restaurant Genre</h4>
