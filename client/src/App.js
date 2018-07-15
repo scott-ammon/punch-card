@@ -6,6 +6,7 @@ import Login from './Login'
 import Signup from './Signup';
 import {UserProfile} from './UserProfile';
 import Home from './Home';
+import Restaurant from "./Restaurant";
 import MenuAppBar from './MenuAppBar';
 
 class App extends Component {
@@ -15,11 +16,13 @@ class App extends Component {
       token: '',
       user: null,
       lockedResult: '',
-      mapboxKey: process.env.REACT_APP_MAPBOX
+      mapboxKey: process.env.REACT_APP_MAPBOX,
+      restaurants: []
     }
     this.liftTokenToState = this.liftTokenToState.bind(this)
     this.logout = this.logout.bind(this)
     this.checkForLocalToken = this.checkForLocalToken.bind(this)
+    this.getRestaurants = this.getRestaurants.bind(this)
     this.handleClick = this.handleClick.bind(this)
   }
 
@@ -64,8 +67,17 @@ class App extends Component {
     }
   }
 
+  getRestaurants() {
+    axios.get("/restaurant").then(result => {
+      this.setState({
+        restaurants: result.data.restaurants
+      })
+    }).catch(err => console.log(err))
+  }
+
   componentDidMount() {
     this.checkForLocalToken()
+    this.getRestaurants()
   }
 
   handleClick(e) {
@@ -80,6 +92,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.restaurants)
     let user = this.state.user
     // render home component upon landing on the site
 
@@ -87,9 +100,10 @@ class App extends Component {
         <Router>
           <div className="App">
             <MenuAppBar />
-            <Route exact path="/" component = {() => <Home mapboxKey={this.state.mapboxKey}/>} />
+            <Route exact path="/" component = {() => <Home mapboxKey={this.state.mapboxKey} restaurants={this.state.restaurants}/>} />
             <Route exact path="/signup" component = {() => <Signup liftToken={this.liftTokenToState} />} />
             <Route exact path="/login" component = {() => <Login liftToken={this.liftTokenToState} />} />
+            <Route exact path="/restaurant" component = {() => <Restaurant restaurants={this.state.restaurants}/>} />
           </div>
         </Router>
       )
