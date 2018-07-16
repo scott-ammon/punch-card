@@ -8,7 +8,7 @@ class Map extends React.Component {
     mapboxgl.accessToken = this.props.mapboxKey;
 
     this.map = new mapboxgl.Map({
-      container: this.mapContainer,
+      container: 'map',
       style: 'mapbox://styles/scottammon/cjjfwon001qvd2rthricow465',
       center: [-122, 47.5],
       zoom: 7
@@ -34,7 +34,7 @@ class Map extends React.Component {
 
   render() {
     return (
-      <div className="map" id="map" ref={el => this.mapContainer = el}></div>
+      <div className="map" id="map"></div>
     );
   }
 }

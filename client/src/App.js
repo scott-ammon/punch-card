@@ -99,7 +99,7 @@ class App extends Component {
       return (
         <Router>
           <div className="App">
-            <MenuAppBar />
+            <MenuAppBar user={user}/>
             <Route exact path="/" component = {() => <Home mapboxKey={this.state.mapboxKey} restaurants={this.state.restaurants}/>} />
             <Route exact path="/signup" component = {() => <Signup liftToken={this.liftTokenToState} />} />
             <Route exact path="/login" component = {() => <Login liftToken={this.liftTokenToState} />} />
