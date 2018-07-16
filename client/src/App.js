@@ -8,6 +8,7 @@ import {UserProfile} from './UserProfile';
 import Home from './Home';
 import Restaurant from "./Restaurant";
 import MenuAppBar from './MenuAppBar';
+import {Link} from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
@@ -92,7 +93,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.restaurants)
     let user = this.state.user
     // render home component upon landing on the site
 
@@ -100,6 +100,8 @@ class App extends Component {
         <Router>
           <div className="App">
             <MenuAppBar />
+            <Link to={"/"}>Map Test Link</Link>
+            <Link to={"/restaurant"}>Restaurant Test Link</Link>
             <Route exact path="/" component = {() => <Home mapboxKey={this.state.mapboxKey} restaurants={this.state.restaurants}/>} />
             <Route exact path="/signup" component = {() => <Signup liftToken={this.liftTokenToState} />} />
             <Route exact path="/login" component = {() => <Login liftToken={this.liftTokenToState} />} />
