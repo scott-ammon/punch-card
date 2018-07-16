@@ -81,7 +81,7 @@ class MenuAppBar extends React.Component {
                   open={open}
                   onClose={this.handleClose}
                 >
-                  <MenuItem component={Link} to="/signup" onClick={this.handleClose}>Profile</MenuItem>
+                  <MenuItem component={Link} to="/cards" onClick={this.handleClose}>Profile</MenuItem>
                   <MenuItem onClick={this.handleClose}>Logout</MenuItem>
                 </Menu>
               </div>
