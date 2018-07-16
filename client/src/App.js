@@ -97,15 +97,19 @@ class App extends Component {
     // render home component upon landing on the site
 
       return (
-        <Router>
-          <div className="App">
-            <MenuAppBar user={user} logout={this.logout}/>
-            <Route exact path="/" component = {() => <Home mapboxKey={this.state.mapboxKey} restaurants={this.state.restaurants}/>} />
-            <Route exact path="/signup" component = {() => <Signup liftToken={this.liftTokenToState} />} />
-            <Route exact path="/login" component = {() => <Login liftToken={this.liftTokenToState} />} />
-            <Route exact path="/restaurant" component = {() => <Restaurant restaurants={this.state.restaurants}/>} />
-          </div>
-        </Router>
+        {user ? (
+          <Home mapboxKey={this.state.mapboxKey} restaurants={this.state.restaurants}/>
+        ) : (
+          <Router>
+            <div className="App">
+              <MenuAppBar user={user} logout={this.logout}/>
+              <Route exact path="/" component = {() => <Home mapboxKey={this.state.mapboxKey} restaurants={this.state.restaurants}/>} />
+              <Route exact path="/signup" component = {() => <Signup liftToken={this.liftTokenToState} />} />
+              <Route exact path="/login" component = {() => <Login liftToken={this.liftTokenToState} />} />
+              <Route exact path="/restaurant" component = {() => <Restaurant restaurants={this.state.restaurants}/>} />
+            </div>
+          </Router>
+        )}
       )
   }
 }
