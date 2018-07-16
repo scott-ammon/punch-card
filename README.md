@@ -1,7 +1,10 @@
 # punch-card
 
-## User Stories
+## Description
 Many restaurants provide punchcards to increase customer loyality. For example if you purchase 9 entrees at a specific restaurant the 10th purchase will be 50% off. However, these physical punchcards are easy to lose. With the punch card application, you won't have to keep track of all your different punch cards or worry about losing them. All your punch cards can be used and stoted on your user account. This will be beneficial for participating restaurants as well because their guests will be more likely to redeem their punch cards, which will increase loyality to the restaurant.
+
+## User Stories
+As a frequent restaurant guest, I want to remember to redeem my punchcards, so I can recieve my discounts at my favorite restaurants.
 
 ## Technologies used
 1. HTML
@@ -13,6 +16,8 @@ Many restaurants provide punchcards to increase customer loyality. For example i
 7. ExpressJS
 8. Axios
 9. NodeJS
+10. NPM
+11. Heroku
 
 ## Approach
 The first thing that we did in our group was a appoint a git master. We all decided Scott was best suited for that position. After that our whole group got together and we started brainstorming on what kind of project we would make. A lot of the ideas were based off of what kind of API's were out there. When we decided what our idea was, the next step was to begin wireframing.
@@ -25,14 +30,41 @@ The first thing that we did in our group was a appoint a git master. We all deci
 ### Final Wireframes
 ![](https://files.slack.com/files-pri/T0351JZQ0-FBS0DLZPH/screen_shot_2018-07-15_at_7.46.44_pm.png)
 
-After we wireframed all of our pages and then proceeded to map out the server side routes as well as the client side routes. In addition to that, we also planned as much as possible for how the models would look for our database.
+After we wireframed all of our pages and then proceeded to map out the server side routes as well as the client side routes.
+
+| METHOD        | PATH          |
+|:-------------:|:-------------:|
+| POST          | /auth/login   |
+| POST          | /auth/signup  |
+| POST          | /auth/me/from/token |
+| GET           | /               |
+| GET           | /restaurant     |
+| GET           | /restaurant/:id |
+| GET           | /user/cards     |
+| POST          | /user/cards     |
+| PUT           | /user/cards/:id |
+| DELETE        | /user/cards/:id |
+
+
+Client-side Routing
+
+| METHOD        | PATH          |
+|:-------------:|:-------------:|
+|               | /home         |
+|               | /login        |
+|               | /signup       |
+|               | /cards        |
+|               | /cards/:id    |
+|               | /restaurant/:id |
+
+In addition to that, we also planned as much as possible for how the models would look for our database.
 
 ## Models
 Here is our original map of our models:
 
 ![punch-card-model](https://user-images.githubusercontent.com/34433863/42727157-415f56fa-8756-11e8-811d-a19c2ae031d1.png)
 
-Once we got all of that initial planning done for the project, our next step was setting up our model files using MongoDB. This proved to be somewhat difficult because creating associations in Mongoose is a bit of a challenge. Next, we divided up the rest of the tasks including building: React components, Express routes, UX-Design, and continuing to update data in our databases.
+Once we got all of that initial planning done for the project, our next step was setting up our model files using MongoDB. This proved to be somewhat difficult because creating associations in Mongoose is a bit of a challenge. Next, we divided up the rest of the tasks including building: React components, Express routes, UX-Design, and continuing to update data in our databases. In addition, to keep us organized while progressing through our tasks, we used a trello board. [I'm an inline-style link](https://trello.com/b/fe0emLn3/ga-project-3)
 
 ### Early Progress Screen Shots
 
@@ -45,7 +77,7 @@ Once we got all of that initial planning done for the project, our next step was
 The main goal of the application is to allow users to put all of their restaurant punch cards together on one platform. MVP will include a main page with a map to find a restaurant, A restaurant page that will let you add their punch card to your profile, a profile page that shows all of your cards, and finally a card page that shows the whole card with punch details.
 
 ## Adding More Features
-There's still a lot more we can add to this application. Some other features will include other promotions restaurants want to give out like limited time only discounts. 
+There's still a lot more we can add to this application. Some other features will include other promotions restaurants want to give out like limited time only discounts.
 
 ## Acknowledgements
 
