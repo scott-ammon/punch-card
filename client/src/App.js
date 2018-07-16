@@ -8,11 +8,10 @@ import {UserProfile} from './UserProfile';
 import Home from './Home';
 import Restaurant from "./Restaurant";
 import MenuAppBar from './MenuAppBar';
-<<<<<<< HEAD
-import CardPreview from './CardPreview';
-=======
 import {Link} from "react-router-dom";
->>>>>>> 97720d5373b6da6193cea71140224e9f8ec8fcbc
+import Card from './Card';
+import Cards from './Cards';
+
 
 class App extends Component {
   constructor(props) {
@@ -108,6 +107,8 @@ class App extends Component {
             <Route exact path="/signup" component = {() => <Signup liftToken={this.liftTokenToState} />} />
             <Route exact path="/login" component = {() => <Login liftToken={this.liftTokenToState} />} />
             <Route exact path="/restaurant" component = {() => <Restaurant restaurants={this.state.restaurants}/>} />
+            <Route exact path="/cards" component = {() => <Cards /> } />
+            <Route exact path="/card" component = {() => <Card /> } />
           </div>
         </Router>
       )
