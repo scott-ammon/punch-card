@@ -17,6 +17,7 @@ As a frequent restaurant guest, I want to remember to redeem my punchcards, so I
 8. Axios
 9. NodeJS
 10. NPM
+11. Heroku
 
 ## Approach
 The first thing that we did in our group was a appoint a git master. We all decided Scott was best suited for that position. After that our whole group got together and we started brainstorming on what kind of project we would make. A lot of the ideas were based off of what kind of API's were out there. When we decided what our idea was, the next step was to begin wireframing.
@@ -82,6 +83,3 @@ There's still a lot more we can add to this application. Some other features wil
 
 Steven Peters
 Kyle Van Bergen
-
-
-user stories
