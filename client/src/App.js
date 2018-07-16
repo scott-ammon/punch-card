@@ -9,6 +9,9 @@ import Home from './Home';
 import Restaurant from "./Restaurant";
 import MenuAppBar from './MenuAppBar';
 import {Link} from "react-router-dom";
+import Card from './Card';
+import Cards from './Cards';
+
 
 class App extends Component {
   constructor(props) {
@@ -99,11 +102,13 @@ class App extends Component {
       return (
         <Router>
           <div className="App">
-            <MenuAppBar />
+            <MenuAppBar user={user} logout={this.logout}/>
             <Route exact path="/" component = {() => <Home mapboxKey={this.state.mapboxKey} restaurants={this.state.restaurants}/>} />
             <Route exact path="/signup" component = {() => <Signup liftToken={this.liftTokenToState} />} />
             <Route exact path="/login" component = {() => <Login liftToken={this.liftTokenToState} />} />
             <Route exact path="/restaurant" component = {() => <Restaurant restaurants={this.state.restaurants}/>} />
+            <Route exact path="/cards" component = {() => <Cards /> } />
+            <Route exact path="/card" component = {() => <Card /> } />
           </div>
         </Router>
       )
