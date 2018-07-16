@@ -8,7 +8,11 @@ import {UserProfile} from './UserProfile';
 import Home from './Home';
 import Restaurant from "./Restaurant";
 import MenuAppBar from './MenuAppBar';
+<<<<<<< HEAD
+import CardPreview from './CardPreview';
+=======
 import {Link} from "react-router-dom";
+>>>>>>> 97720d5373b6da6193cea71140224e9f8ec8fcbc
 
 class App extends Component {
   constructor(props) {
