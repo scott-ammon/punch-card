@@ -100,8 +100,6 @@ class App extends Component {
         <Router>
           <div className="App">
             <MenuAppBar />
-            <Link to={"/"}>Map Test Link</Link>
-            <Link to={"/restaurant"}>Restaurant Test Link</Link>
             <Route exact path="/" component = {() => <Home mapboxKey={this.state.mapboxKey} restaurants={this.state.restaurants}/>} />
             <Route exact path="/signup" component = {() => <Signup liftToken={this.liftTokenToState} />} />
             <Route exact path="/login" component = {() => <Login liftToken={this.liftTokenToState} />} />
