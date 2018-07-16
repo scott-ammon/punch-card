@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from "react-router-dom";
 
 class CardPreview extends Component {
 
@@ -6,7 +7,7 @@ class CardPreview extends Component {
     return (
       <div>
         <p>{this.props.card.name}</p>
-        <input />
+        <Link to={`/card/${this.props.card.id}`}>Show</Link>
       </div>
     )
   }
