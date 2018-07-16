@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 class Signup extends Component {
   constructor(props) {
@@ -62,10 +64,34 @@ class Signup extends Component {
       <div>
         <p>{(this.state.response) ? this.state.response.message : ''}</p>
         <form onSubmit={this.handleSubmit}>
-          Name: <input type='text' name="name" value={this.state.name} onChange={this.handleInputChange} /><br />
-          Email: <input type='email' name="email" value={this.state.email} onChange={this.handleInputChange} /><br />
-          Password: <input type='password' name="password" value={this.state.password} onChange={this.handleInputChange} />
-          <button type="submit" value="Sign up">Sign Up</button>
+          <TextField
+            id="name"
+            name="name"
+            label="Name"
+            className="nameField"
+            value={this.state.name}
+            onChange={this.handleInputChange}
+            margin="normal"
+          /><br />
+          <TextField
+            id="email"
+            name="email"
+            label="Email"
+            className="emailField"
+            value={this.state.email}
+            onChange={this.handleInputChange}
+            margin="normal"
+          /><br />
+          <TextField
+            id="password"
+            name="password"
+            label="Password"
+            className="passwordField"
+            value={this.state.password}
+            onChange={this.handleInputChange}
+            margin="normal"
+          /><br />
+          <Button variant="contained" color="primary" type="submit" value="Sign up">Sign up</Button>
         </form>
       </div>
     )

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Map from './Map';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import ReactMapboxGl, { Layer, Feature, Marker } from "react-mapbox-gl";
 
 class Home extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class Home extends Component {
     }
     this.handleChange = this.handleChange.bind(this)
   }
-
+  
   handleChange(e) {
     this.setState({
       search: e.target.value
@@ -19,6 +19,10 @@ class Home extends Component {
   }
 
   render() {
+    const Map = ReactMapboxGl({
+      accessToken: this.props.mapboxKey
+    })
+
     return (
       <div>
         <h4>Collect and use loyalty cards from all your favorite restaurants and food trucks!</h4>
@@ -33,7 +37,27 @@ class Home extends Component {
           />
           <Button id="search-btn" variant="contained" color="primary" type="submit">Search</Button>
         </form>
-        <Map restaurants={this.props.restaurants} mapboxKey={this.props.mapboxKey}/>
+        <Map
+          style="mapbox://styles/scottammon/cjjfwon001qvd2rthricow465"
+          center={[-122, 47.5]}
+          zoom={[7]}
+          containerStyle={{
+            height: "70vh",
+            width: "100vw"
+          }}>
+            <Layer
+              type="symbol"
+              id="marker"
+              layout={{ "icon-image": "marker-15" }}>
+              <Marker
+                coordinates={[-0.2416815, 51.5285582]}
+                anchor="bottom"
+              >MARKER
+              </Marker>
+              <Feature coordinates={[-122, 51.3233379650232]}
+              />
+            </Layer>
+        </Map>
       </div>
     )
   }

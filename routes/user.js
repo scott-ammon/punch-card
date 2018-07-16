@@ -30,6 +30,16 @@ router.post("/cards", (req, res) => {
     })
 })
 
+// GET - Get's a specific card from the user's card array
+router.get("/cards/:id", (req, res) => {
+  User.findOne({email: "xy@xy.com"}).populate({
+    path: "cards",
+    match: {_id: req.params.id}
+  }).exec(function(err, user) {
+    res.json(user.cards);
+  })
+})
+
 // DELETE - Removes a card from the current user's cards array.
 router.delete("/cards/:id", (req, res) => {
   User.findOne({email: "xy@xy.com"}, function(err, user) {

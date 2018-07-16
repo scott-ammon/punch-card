@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import {Link} from "react-router-dom";
 
 class Map extends React.Component {
+
   componentDidMount() {
     let restaurantsArray = this.props.restaurants;
     mapboxgl.accessToken = this.props.mapboxKey;
@@ -14,16 +16,23 @@ class Map extends React.Component {
       zoom: 7
     });
 
+    var thisMap = this.map
+
     // empty array to hold each mapboxgl marker
     var markerArray = [];
+
+    var test = function(e) {
+      e.preventDefault()
+      console.log("Success")
+    }
 
     // add all projects to map on main get route to '/map'
     restaurantsArray.forEach(function(restaurant) {
       var marker = new mapboxgl.Marker()
       .setLngLat([restaurant.lng, restaurant.lat])
       .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-      .setHTML("<a href='/restaurant/" + restaurant._id + "'>" + restaurant.name + "</a>"))
-      .addTo(this.map);
+      .setHTML("<button onclick='{console}'>" + restaurant.name +"</button>"))
+      .addTo(thisMap);
       markerArray.push(marker);
     });
   }
@@ -34,7 +43,9 @@ class Map extends React.Component {
 
   render() {
     return (
-      <div className="map" id="map"></div>
+      <div className="map-wrapper">
+        <div className="map" id="map" ref={el => this.mapContainer = el}></div>
+      </div>
     );
   }
 }
