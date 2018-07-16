@@ -5,8 +5,9 @@ const Card = require('../models/Card');
 const User = require('../models/User');
 
 // GET - Finds all cards associated with current user
-router.get("/cards", (req, res) => {
-  User.findOne({email: "xy@xy.com"}).populate("cards").exec(function(err, user) {
+router.post("/cards/all", (req, res) => {
+  console.log("req.body is: ", req.body);
+  User.findOne({email: req.body.user.email}).populate("cards").exec(function(err, user) {
     res.json(user.cards);
   })
 })
@@ -15,6 +16,7 @@ router.get("/cards", (req, res) => {
 router.post("/cards", (req, res) => {
     User.findOne({email: req.body.user.email}, function(err, user) {
       Card.create({
+          restaurant: req.body.restaurant,
           punches: 2,
           reqPunches: 6
       }, function(err, card) {
@@ -30,7 +32,7 @@ router.post("/cards", (req, res) => {
 })
 
 // GET - Get's a specific card from the user's card array
-router.get("/cards/:id", (req, res) => {
+router.post("/cards/:id", (req, res) => {
   User.findOne({email: req.body.user.email}).populate({
     path: "cards",
     match: {_id: req.params.id}
