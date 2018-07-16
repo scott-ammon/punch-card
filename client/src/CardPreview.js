@@ -6,7 +6,7 @@ class CardPreview extends Component {
     return (
       <div>
         <p>{this.props.card.name}</p>
-        <input />
+        <Link to={`/card/${this.props.card.id}`}>Show</Link>
       </div>
     )
   }
