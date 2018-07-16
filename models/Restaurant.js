@@ -5,6 +5,7 @@ const Card = require('../models/Card');
 const restaurantSchema = new mongoose.Schema({
   name: String,
   address: String,
+  img: String,
   reward: String,
   genre: String,
   lat: Number,
