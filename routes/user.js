@@ -13,8 +13,7 @@ router.get("/cards", (req, res) => {
 
 // POST - Creates a card (TODO: Accept form values)
 router.post("/cards", (req, res) => {
-    User.findOne({email: "xy@xy.com"}, function(err, user) {
-      console.log(user);
+    User.findOne({email: req.body.user.email}, function(err, user) {
       Card.create({
           punches: 2,
           reqPunches: 6
@@ -32,7 +31,7 @@ router.post("/cards", (req, res) => {
 
 // GET - Get's a specific card from the user's card array
 router.get("/cards/:id", (req, res) => {
-  User.findOne({email: "xy@xy.com"}).populate({
+  User.findOne({email: req.body.user.email}).populate({
     path: "cards",
     match: {_id: req.params.id}
   }).exec(function(err, user) {
