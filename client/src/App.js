@@ -4,7 +4,6 @@ import './App.css';
 import axios from 'axios';
 import Login from './Login'
 import Signup from './Signup';
-import {UserProfile} from './UserProfile';
 import Home from './Home';
 import Restaurant from "./Restaurant";
 import MenuAppBar from './MenuAppBar';
@@ -107,7 +106,7 @@ class App extends Component {
             <Route exact path="/signup" component = {() => <Signup liftToken={this.liftTokenToState} />} />
             <Route exact path="/login" component = {() => <Login liftToken={this.liftTokenToState} />} />
             <Route exact path="/restaurant/:id" component = {(props) => <Restaurant user={user} restaurants={this.state.restaurants} {...props}/>} />
-            <Route exact path="/cards" component = {() => <Cards /> } />
+            <Route exact path="/cards" component = {() => <Cards user={user}/> } />
             <Route exact path="/card" component = {() => <Card /> } />
           </div>
         </Router>

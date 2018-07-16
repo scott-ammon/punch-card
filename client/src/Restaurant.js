@@ -5,6 +5,10 @@ import axios from 'axios';
 class Restaurant extends Component {
   constructor(props) {
     super(props)
+    this.state ={ 
+      user: null,
+      restaurant: null
+    }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   
@@ -12,7 +16,8 @@ class Restaurant extends Component {
       e.preventDefault()
       console.log(this.props.user)
       axios.post("/user/cards", {
-        user: this.props.user
+        user: this.props.user,
+        restaurant: this.state.restaurant
       }).then(result => {
         console.log(result)
       })
@@ -21,6 +26,10 @@ class Restaurant extends Component {
   render() {
     var restaurant = this.props.restaurants.find((restaurant) => {
       return restaurant._id === this.props.match.params.id
+    })
+
+    this.setState({
+      restaurant: restaurant._id
     })
 
     return (
