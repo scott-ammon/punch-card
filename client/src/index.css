@@ -4,18 +4,23 @@ body {
   font-family: sans-serif;
 }
 
+.map-wrapper {
+	margin-top: 25px auto 0 auto;
+	width: 60vw;
+	height: 60vh;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+}
+
 .mapboxgl-canvas {
     position: absolute;
     top: 0;
     bottom: 0;
     width: 100%;
     height: 100%;
-}
-
-#map {
-	margin-top: 25px;
-	width: 100vw;
-	height: 60vh;
 }
 
 #search-btn {

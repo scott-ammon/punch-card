@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import MenuAppBar from './MenuAppBar';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
@@ -63,13 +62,14 @@ class Login extends Component {
           <TextField
             id="password"
             name="password"
-            label="password"
+            label="Password"
             type="password"
             className="passwordField"
             value={this.state.password}
             onChange={this.handleInputChange}
             margin="normal"
-          /><br />
+          />
+          <br />
           <Button variant="contained" color="primary" type="submit" value="Log In">Log In</Button>
         </form>
       </div>
