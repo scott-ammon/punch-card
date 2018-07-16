@@ -8,3 +8,9 @@ Many restaurants provide punchcards to increase customer loyality. For example i
 Here is our original map of our models:
 
 ![punch-card-model](https://user-images.githubusercontent.com/34433863/42727157-415f56fa-8756-11e8-811d-a19c2ae031d1.png)
+
+
+## Acknowledgements
+
+Steven Peters
+Kyle Van Bergen
