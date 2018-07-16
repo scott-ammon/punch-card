@@ -1,23 +1,49 @@
-import React, {Component} from 'react';
+import React, {Component, Link} from 'react';
+import Button from '@material-ui/core/Button';
+import axios from 'axios';
 
 class Restaurant extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      restaurants: this.props.restaurants
+    this.state ={ 
+      user: null,
+      restaurant: null
     }
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
+  
+  handleSubmit(e) {
+      e.preventDefault()
+      console.log(this.props.user)
+      axios.post("/user/cards", {
+        user: this.props.user,
+        restaurant: this.state.restaurant
+      }).then(result => {
+        console.log(result)
+      })
+    }
+
   render() {
-    console.log(this.props);
+    var restaurant = this.props.restaurants.find((restaurant) => {
+      return restaurant._id === this.props.match.params.id
+    })
+
+    this.setState({
+      restaurant: restaurant._id
+    })
+
     return (
       <div className="">
-        <h1>{this.props.restaurants[0].name}</h1>
-        <div>Image for Rest here.</div>
-        <div>Map here.</div>
-        <h4>Restaurant Genre</h4>
+        <h1>{restaurant.name}</h1>
+        <div>
+          <img src=""/>
+        </div>
+        <h4>Location: {restaurant.address}</h4>
+        <h4>{restaurant.genre}</h4>
+        <h4>Card Reward: {restaurant.reward}</h4>
         <div>
           <form onSubmit={this.handleSubmit}>
-            <button type="submit" value="Add">Add new card!</button>
+            <Button component={Link} to="/cards" variant="contained" color="primary" type="submit">Add new card!</Button>
           </form>
         </div>
       </div>

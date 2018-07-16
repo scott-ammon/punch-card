@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import ReactMapboxGl, { Layer, Feature, Marker } from "react-mapbox-gl";
+import {Link} from 'react-router-dom';
 
 class Home extends Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class Home extends Component {
     return (
       <div>
         <h4>Collect and use loyalty cards from all your favorite restaurants and food trucks!</h4>
+        <Link to={"/restaurant/5b4d0e8034ae4c3fb7c2a2fe"}>Restaurant Check</Link>
         <form onSubmit={this.handleSubmit}>
           <TextField
             id="search"
