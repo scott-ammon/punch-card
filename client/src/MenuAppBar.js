@@ -29,35 +29,34 @@ const styles = {
 
 class MenuAppBar extends React.Component {
   state = {
-    auth: true,
-    anchorEl: null,
-  };
-
-  handleChange = (event, checked) => {
-    this.setState({ auth: checked });
-  };
+    anchorEl: null
+  }
 
   handleMenu = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
+    this.setState({ anchorEl: event.currentTarget })
+  }
 
   handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
+    this.setState({ anchorEl: null })
+  }
+
+  handleLogoutAndClose = () => {
+    this.setState({ anchorEl: null })
+    this.props.logout()
+  }
 
   render() {
     const { classes } = this.props;
-    const { auth, anchorEl } = this.state;
+    const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
 
     return (
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <Typography variant="title" color="inherit" className={classes.flex}>
+            <Typography component={Link} to="/" variant="title" color="inherit" className={classes.flex}>
               Punch Card
             </Typography>
-            {auth && (
               <div>
                 <IconButton
                   aria-owns={open ? 'menu-appbar' : null}
@@ -65,7 +64,7 @@ class MenuAppBar extends React.Component {
                   onClick={this.handleMenu}
                   color="inherit"
                 >
-                  <AccountCircle />
+                <AccountCircle />
                 </IconButton>
                 <Menu
                   id="menu-appbar"
@@ -81,11 +80,16 @@ class MenuAppBar extends React.Component {
                   open={open}
                   onClose={this.handleClose}
                 >
-                  <MenuItem component={Link} to="/signup" onClick={this.handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+                {this.props.user ? (
+                  <div>
+                    <MenuItem component={Link} to="/profile" onClick={this.handleClose}>Profile</MenuItem>
+                    <MenuItem onClick={this.handleLogoutAndClose}>Logout</MenuItem>
+                  </div>
+                ) : (
+                  <MenuItem component={Link} to="/login" onClick={this.handleClose}>Login</MenuItem>
+                )}
                 </Menu>
               </div>
-            )}
           </Toolbar>
         </AppBar>
       </div>
