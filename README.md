@@ -64,7 +64,7 @@ Here is our original map of our models:
 
 ![punch-card-model](https://user-images.githubusercontent.com/34433863/42727157-415f56fa-8756-11e8-811d-a19c2ae031d1.png)
 
-Once we got all of that initial planning done for the project, our next step was setting up our model files using MongoDB. This proved to be somewhat difficult because creating associations in Mongoose is a bit of a challenge. Next, we divided up the rest of the tasks including building: React components, Express routes, UX-Design, and continuing to update data in our databases. In addition, to keep us organized while progressing through our tasks, we used a trello board. [I'm an inline-style link](https://trello.com/b/fe0emLn3/ga-project-3)
+Once we got all of that initial planning done for the project, our next step was setting up our model files using MongoDB. This proved to be somewhat difficult because creating associations in Mongoose is a bit of a challenge. Next, we divided up the rest of the tasks including building: React components, Express routes, UX-Design, and continuing to update data in our databases. In addition, to keep us organized while progressing through our tasks, we used a trello board. [Trello Board](https://trello.com/b/fe0emLn3/ga-project-3)
 
 ### Early Progress Screen Shots
 
