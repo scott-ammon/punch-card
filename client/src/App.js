@@ -8,6 +8,7 @@ import {UserProfile} from './UserProfile';
 import Home from './Home';
 import Restaurant from "./Restaurant";
 import MenuAppBar from './MenuAppBar';
+import CardPreview from './CardPreview';
 
 class App extends Component {
   constructor(props) {
