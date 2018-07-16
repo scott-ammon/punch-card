@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CardPreview from './CardPreview';
+import axios from 'axios';
 
 class Cards extends Component {
   constructor(props) {
@@ -10,24 +11,15 @@ class Cards extends Component {
   }
 
   componentDidMount() {
-    this.setState({cards: [
-      {
-        name: 'Teriyaki Highway',
-        punches: 4,
-        reqPunches: 9
-      },
-      {
-        name: 'Olive Garden',
-        punches: 5,
-        reqPunches: 6
-      },
-      {
-        name: 'Taco Del Mar',
-        punches: 2,
-        reqPunches: 8
-      }
-    ]
-  })
+    console.log("this.props.user is: ", this.props.user)
+    axios.post("/user/cards/all", {
+      user: this.props.user
+    }).then(result => {
+      console.log(result)
+      this.setState({
+        cards: result
+      })
+    })
   }
 
   render() {
