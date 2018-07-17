@@ -54,7 +54,7 @@ class MenuAppBar extends React.Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <Typography component={Link} to="/" variant="title" color="inherit" className={classes.flex}>
+            <Typography id="headline" component={Link} to="/" variant="title" color="inherit" className={classes.flex}>
               Punch Card
             </Typography>
               <div>

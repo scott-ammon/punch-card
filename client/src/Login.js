@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import {Link} from 'react-router-dom';
 
 class Login extends Component {
   constructor(props) {
@@ -47,8 +48,7 @@ class Login extends Component {
 
   render() {
     return(
-      <div>
-        <p>{(this.state.response) ? this.state.response.message : ''}</p>
+      <div className="form-container">
         <form onSubmit={this.handleSubmit}>
           <TextField
               id="email"
@@ -70,8 +70,12 @@ class Login extends Component {
             margin="normal"
           />
           <br />
-          <Button variant="contained" color="primary" type="submit" value="Log In">Log In</Button>
+          <Button id="login-btn" variant="contained" color="primary" type="submit" value="Log In">Log In</Button>
         </form>
+        <div id="login-link">
+          <Link to={"/signup"}>Not a member? Sign up today!</Link>
+        </div>
+        <p className="alert-msg">{(this.state.response) ? this.state.response.message : ''}</p>
       </div>
     );
   }

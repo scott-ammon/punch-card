@@ -25,9 +25,9 @@ class Home extends Component {
     })
 
     return (
-      <div>
+      <div className="home-container">
         <h4>Collect and use loyalty cards from all your favorite restaurants and food trucks!</h4>
-        <Link to={"/restaurant/5b4d0e8034ae4c3fb7c2a2fe"}>Restaurant Check</Link>
+        <Link to={"/restaurant/5b4d2f0e6f6a124f40312e66"}>Restaurant Check</Link>
         <form onSubmit={this.handleSubmit}>
           <TextField
             id="search"
@@ -39,27 +39,28 @@ class Home extends Component {
           />
           <Button id="search-btn" variant="contained" color="primary" type="submit">Search</Button>
         </form>
-        <Map
-          style="mapbox://styles/scottammon/cjjfwon001qvd2rthricow465"
-          center={[-122, 47.5]}
-          zoom={[7]}
-          containerStyle={{
-            height: "70vh",
-            width: "100vw"
-          }}>
-            <Layer
-              type="symbol"
-              id="marker"
-              layout={{ "icon-image": "marker-15" }}>
-              <Marker
-                coordinates={[-0.2416815, 51.5285582]}
-                anchor="bottom"
-              >MARKER
-              </Marker>
-              <Feature coordinates={[-122, 51.3233379650232]}
-              />
-            </Layer>
-        </Map>
+        <div className="map-wrapper">
+          <Map
+            style="mapbox://styles/scottammon/cjjfwon001qvd2rthricow465"
+            center={[-122.334020, 47.609676]}
+            zoom={[11]}
+            containerStyle={{
+              height: "60vh"
+            }}>
+              <Layer
+                type="symbol"
+                id="marker"
+                layout={{ "icon-image": "marker-15" }}>
+                <Marker
+                  coordinates={[-0.2416815, 51.5285582]}
+                  anchor="bottom"
+                >MARKER
+                </Marker>
+                <Feature coordinates={[-122, 51.3233379650232]}
+                />
+              </Layer>
+          </Map>
+        </div>
       </div>
     )
   }

@@ -1,3 +1,5 @@
+// THIS FILE WILL NO LONGER BE NEEDED WITH MAPBOX REACT WRAPPER
+
 import React, {Component} from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';

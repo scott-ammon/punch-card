@@ -61,8 +61,10 @@ class Signup extends Component {
 
   render() {
     return(
-      <div>
-        <p>{(this.state.response) ? this.state.response.message : ''}</p>
+      <div className="form-container">
+        <div className="signup-header">
+          <h4>Sign up now to start collecting rewards at all your favorite restaurants and food trucks!</h4>
+        </div>
         <form onSubmit={this.handleSubmit}>
           <TextField
             id="name"
@@ -93,6 +95,7 @@ class Signup extends Component {
           /><br />
           <Button variant="contained" color="primary" type="submit" value="Sign up">Sign up</Button>
         </form>
+        <p className="alert-msg">{(this.state.response) ? this.state.response.message : ''}</p>
       </div>
     )
   }
