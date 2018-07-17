@@ -3,6 +3,8 @@ import {Link} from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
+import {withRouter} from 'react-router-dom';
+import axios from 'axios';
 
 class Card extends Component {
   constructor(props) {
@@ -11,6 +13,7 @@ class Card extends Component {
       search: null
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange(e) {
@@ -18,6 +21,15 @@ class Card extends Component {
       search: e.target.value
     })
   }
+  
+  handleSubmit(e) {
+      e.preventDefault()
+      console.log('handleSubmit hit');
+      axios.delete("/user/cards/" + this.props.match.params.id + "/" + this.props.user._id).then(result => {
+        console.log(result)
+        this.props.history.push("/cards");
+      })
+    }
 
   render() {
 
@@ -59,14 +71,14 @@ class Card extends Component {
                 Redeem
               </Button>
         </div>
-          <div className="removeCardButton">
-            <Button variant="contained" color="secondary" alignItems="flex-end">
+          <form className="removeCardButton" onSubmit={this.handleSubmit}>
+            <Button type="submit" variant="contained" color="secondary" alignItems="flex-end">
               Remove Card
             </Button>
-          </div>
+          </form>
       </div>
     )
   }
 }
 
-export default Card;
+export default withRouter(Card);
