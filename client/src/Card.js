@@ -26,33 +26,34 @@ class Card extends Component {
     //     })
 
     return (
-      <div>
-        <Grid container justify="center" direction="column" alignItems="center">
-          <h1>Restaurant Name</h1>
-          <p>8 punches to get a free sandwich</p>
+      <div className="home-container">
+        <div className="card-container">
+          <h1 className="restaurantName">Restaurant Name</h1>
+          <p className="reqPunches">8 punches to get a free sandwich</p>
           <div>
             1 2 3 4 5 6 7 8 9 10
           </div>
           <div>
           <TextField
+            spacing={40}
             id="code"
             name="code"
             label="enter code to punch..."
-            className="codeField"
+            className="codeInput"
             value={this.state.code}
             onChange={this.handleInputChange}
             margin="normal"
           />
-            <Button variant="contained" color="primary">
+            <Button variant="contained" color="primary" className="redeemButton">
               Redeem
             </Button>
           </div>
+        </div>
           <div>
-            <Button variant="contained" color="secondary">
+            <Button variant="contained" color="secondary" justify="flex-end">
               Remove Card
             </Button>
           </div>
-        </Grid>
       </div>
     )
   }

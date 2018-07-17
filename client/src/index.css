@@ -19,7 +19,7 @@ body {
   text-decoration: none;
 }
 
-.nameField, 
+.nameField,
 .emailField,
 .passwordField {
   width: 90vw;
@@ -45,6 +45,33 @@ body {
 .signup-header {
   margin-top: 50px;
   text-align: center;
+}
+
+.codeInput {
+  margin-right: 2em;
+}
+
+.MuiFormControl-marginNormal-93 {
+  margin-right: 2em;
+}
+
+.redeemButton {
+  margin-left: 2em;
+}
+
+.reqPunches {
+  margin-bottom: 4em;
+}
+
+.restaurantName {
+  margin-bottom: 2em;
+}
+
+.card-container {
+  border: 2px solid black;
+  margin-top: 3em;
+  padding-bottom: 2em;
+  border-radius: 20px;
 }
 
 #login-link {
