@@ -14,6 +14,7 @@ router.post("/cards/all", (req, res) => {
 
 // POST - Creates a card (TODO: Accept form values)
 router.post("/cards", (req, res) => {
+    console.log(req.body);
     User.findOne({email: req.body.user.email}, function(err, user) {
       Card.create({
           restaurant: req.body.restaurant,
@@ -25,6 +26,8 @@ router.post("/cards", (req, res) => {
           user.save(function(err) {
               if (err) {
                   console.log(err);
+              } else {
+                res.sendStatus(200)
               }
           })
       })  
