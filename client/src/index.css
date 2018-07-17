@@ -31,6 +31,17 @@ body {
   text-align: center;
 }
 
+.card-container {
+  width: 20em;
+  margin: 0 auto;
+  text-align: center;
+  border: 1px solid black;
+  margin-top: 3em;
+  padding-bottom: 2em;
+  border-radius: 20px;
+  margin-bottom: 2em;
+}
+
 .form-container {
   width: 90vw;
   margin: 0 auto;
@@ -45,10 +56,6 @@ body {
 .signup-header {
   margin-top: 50px;
   text-align: center;
-}
-
-.codeInput {
-  margin-right: 2em;
 }
 
 .MuiFormControl-marginNormal-93 {
@@ -67,11 +74,34 @@ body {
   margin-bottom: 2em;
 }
 
-.card-container {
-  border: 2px solid black;
-  margin-top: 3em;
-  padding-bottom: 2em;
-  border-radius: 20px;
+.MuiButton-containedSecondary-130 {
+    color: #fff;
+    margin-left: 13em;
+    background-color: #f50057;
+}
+
+.removeCardButton {
+  margin-left: 11em;
+}
+
+.numberOfPunches {
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 28vw;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin-bottom: 2em;
+}
+
+.punch {
+  display: inline-block;
+  width: 1em;
+  border: 1px solid black;
+  height: 1em;
+  margin-right: .5em;
+  border-radius: 50%;
 }
 
 #login-link {

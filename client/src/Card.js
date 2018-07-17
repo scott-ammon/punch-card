@@ -29,28 +29,38 @@ class Card extends Component {
       <div className="home-container">
         <div className="card-container">
           <h1 className="restaurantName">Restaurant Name</h1>
-          <p className="reqPunches">8 punches to get a free sandwich</p>
-          <div>
-            1 2 3 4 5 6 7 8 9 10
+          <p className="reqPunches">10 punches to get a free sandwich!</p>
+          <div className="numberOfPunches">
+            <div className="one punch">
+            </div>
+            <div className="two punch">
+            </div>
+            <div className="three punch">
+            </div>
+            <div className="four punch">
+            </div>
+            <div className="five punch">
+            </div>
+            <div className="six punch">
+            </div>
+            <div className="seven punch">
+            </div>
+            <div className="eight punch">
+            </div>
+            <div className="nine punch">
+            </div>
+            <div className="ten punch">
+            </div>
           </div>
-          <div>
-          <TextField
-            spacing={40}
-            id="code"
-            name="code"
-            label="enter code to punch..."
-            className="codeInput"
-            value={this.state.code}
-            onChange={this.handleInputChange}
-            margin="normal"
-          />
-            <Button variant="contained" color="primary" className="redeemButton">
-              Redeem
-            </Button>
-          </div>
+            <TextField
+              placeholder="enter code to punch..." id="codeInput" underlineStyle={{display: 'none'}}
+            />
+              <Button variant="contained" color="primary">
+                Redeem
+              </Button>
         </div>
-          <div>
-            <Button variant="contained" color="secondary" justify="flex-end">
+          <div className="removeCardButton">
+            <Button variant="contained" color="secondary" alignItems="flex-end">
               Remove Card
             </Button>
           </div>
