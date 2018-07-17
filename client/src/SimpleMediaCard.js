@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import {Link} from 'react-router-dom';
 
 const styles = {
   card: {
@@ -20,22 +21,23 @@ const styles = {
 
 function SimpleMediaCard(props) {
   const { classes } = props;
+  const url = "/card/" + props.cardId
   return (
     <div style={{width: '70%', margin: '10px auto'}}>
       <Card style={{"justify-content": "center"}} className={classes.card}>
         <CardMedia
           className={classes.media}
-          image="http://www.placecage.com/c/200/300"
+          image={props.restaurant.img}
           title="Restaurant punch-card"
         />
         <CardContent>
           <Typography gutterBottom variant="headline" component="h2">
-            Insert Card here.
+            {props.restaurant.name}
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" color="primary">
-            More...
+          <Button component={Link} to={url} size="small" color="primary">
+            View Card
           </Button>
         </CardActions>
       </Card>

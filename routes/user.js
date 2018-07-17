@@ -6,6 +6,7 @@ const User = require('../models/User');
 
 // GET - Finds all cards associated with current user
 router.post("/cards/all", (req, res) => {
+  console.log(req.body);
   User.findOne({email: req.body.user.email}).populate("cards").exec(function(err, user) {
     res.json(user.cards);
   })
