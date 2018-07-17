@@ -87,7 +87,7 @@ body {
 .numberOfPunches {
   border: 1px solid black;
   border-radius: 10px;
-  width: 28vw;
+  width: 75vw;
   margin: 0 auto;
   text-align: center;
   padding-top: 1em;
@@ -107,7 +107,7 @@ body {
 .restaurantText {
   text-align: left;
   width: 20em;
-  margin-left: 1em;
+  margin-left: 2em;
 }
 
 #newCard {
