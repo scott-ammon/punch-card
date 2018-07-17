@@ -21,25 +21,21 @@ const styles = {
 function SimpleMediaCard(props) {
   const { classes } = props;
   return (
-    <div>
-      <Card className={classes.card}>
+    <div style={{width: '70%', margin: '10px auto'}}>
+      <Card style={{"justify-content": "center"}} className={classes.card}>
         <CardMedia
           className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
+          image="http://www.placecage.com/c/200/300"
+          title="Restaurant punch-card"
         />
         <CardContent>
           <Typography gutterBottom variant="headline" component="h2">
-            Lizard
-          </Typography>
-          <Typography component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
+            Insert Card here.
           </Typography>
         </CardContent>
         <CardActions>
           <Button size="small" color="primary">
-            Learn More
+            More...
           </Button>
         </CardActions>
       </Card>
