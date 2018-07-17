@@ -3,6 +3,7 @@ import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import {Link} from 'react-router-dom';
+import {withRouter} from "react-router-dom";
 
 class Login extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
-      response: null
+      response: null,
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
@@ -40,13 +41,15 @@ class Login extends Component {
         localStorage.setItem('mernToken', result.data.token)
         this.props.liftToken(result.data)
         this.setState({
-          response: null
+          response: null,
         })
+        this.props.history.push("/cards");
       }
     })
   }
 
   render() {
+    console.log("Logged In State Variable: ", this.state.loggedIn)
     return(
       <div className="form-container">
         <form onSubmit={this.handleSubmit}>
@@ -81,4 +84,4 @@ class Login extends Component {
   }
 }
 
-export default Login
+export default withRouter(Login)

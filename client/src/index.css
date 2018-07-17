@@ -113,3 +113,8 @@ body {
   width: 20px;
   height: 20px;
 }
+
+#restaurant-img {
+  width: 50vw;
+  height: auto;
+}

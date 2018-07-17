@@ -14,6 +14,7 @@ router.post("/cards/all", (req, res) => {
 
 // POST - Creates a card (TODO: Accept form values)
 router.post("/cards", (req, res) => {
+    console.log(req.body);
     User.findOne({email: req.body.user.email}, function(err, user) {
       Card.create({
           restaurant: req.body.restaurant,
@@ -25,6 +26,8 @@ router.post("/cards", (req, res) => {
           user.save(function(err) {
               if (err) {
                   console.log(err);
+              } else {
+                res.sendStatus(200)
               }
           })
       })  
@@ -43,11 +46,18 @@ router.post("/cards/:id", (req, res) => {
 
 // DELETE - Removes a card from the current user's cards array.
 router.delete("/cards/:id", (req, res) => {
-  User.findOne({email: "xy@xy.com"}, function(err, user) {
-    user.update({
-      $pull: {cards: {$in: [req.params.id]}}
-    })
-  })
+  User.findByIdAndUpdate("5b4c5655fdd5f169c5e3a0d5", 
+  {$pull: {cards: req.params.id}}, {new: true}, function(err, user) {
+    console.log("err:", err);
+    console.log("user:", user);
+    Card.findByIdAndRemove(req.params.id, function(err, card) {
+      if (err) {
+        console.log(err)
+      } else {
+        console.log(card)
+      }
+    });
+  });
 })
 
 module.exports = router;
