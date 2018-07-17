@@ -18,9 +18,9 @@ app.use('/locked', expressJWT({secret: process.env.JWT_SECRET}).unless({method: 
 mongoose.connect('mongodb://localhost/jwtAuth');
 
 // Use this for production
-app.get('*', (req, res) => {
-  res.sendFile(__dirname + "/client/build/index.html");
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(__dirname + "/client/build/index.html");
+// });
 
 let port = process.env.PORT || 3001;
 
@@ -29,4 +29,3 @@ let server = app.listen(port, () => {
 });
 
 module.exports = server;
-
