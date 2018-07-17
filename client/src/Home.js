@@ -23,6 +23,14 @@ class Home extends Component {
     const Map = ReactMapboxGl({
       accessToken: this.props.mapboxKey
     })
+    
+    let markerArray = this.props.restaurants.map(restaurant => {
+      return (<Marker
+                coordinates={[restaurant.lng, restaurant.lat]}
+                anchor="bottom">
+                <img id='map-icon' src='https://cdn.onlinewebfonts.com/svg/img_198790.png'/>
+              </Marker>)
+    })
 
     return (
       <div className="home-container">
@@ -47,18 +55,7 @@ class Home extends Component {
             containerStyle={{
               height: "60vh"
             }}>
-              <Layer
-                type="symbol"
-                id="marker"
-                layout={{ "icon-image": "marker-15" }}>
-                <Marker
-                  coordinates={[-0.2416815, 51.5285582]}
-                  anchor="bottom"
-                >MARKER
-                </Marker>
-                <Feature coordinates={[-122, 51.3233379650232]}
-                />
-              </Layer>
+            {markerArray}
           </Map>
         </div>
       </div>
