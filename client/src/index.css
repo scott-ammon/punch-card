@@ -19,7 +19,7 @@ body {
   text-decoration: none;
 }
 
-.nameField, 
+.nameField,
 .emailField,
 .passwordField {
   width: 90vw;
@@ -29,6 +29,17 @@ body {
   width: 90vw;
   margin: 0 auto;
   text-align: center;
+}
+
+.card-container {
+  width: 20em;
+  margin: 0 auto;
+  text-align: center;
+  border: 1px solid black;
+  margin-top: 3em;
+  padding-bottom: 2em;
+  border-radius: 20px;
+  margin-bottom: 2em;
 }
 
 .form-container {
@@ -45,6 +56,52 @@ body {
 .signup-header {
   margin-top: 50px;
   text-align: center;
+}
+
+.MuiFormControl-marginNormal-93 {
+  margin-right: 2em;
+}
+
+.redeemButton {
+  margin-left: 2em;
+}
+
+.reqPunches {
+  margin-bottom: 4em;
+}
+
+.restaurantName {
+  margin-bottom: 2em;
+}
+
+.MuiButton-containedSecondary-130 {
+    color: #fff;
+    margin-left: 13em;
+    background-color: #f50057;
+}
+
+.removeCardButton {
+  margin-left: 11em;
+}
+
+.numberOfPunches {
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 28vw;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin-bottom: 2em;
+}
+
+.punch {
+  display: inline-block;
+  width: 1em;
+  border: 1px solid black;
+  height: 1em;
+  margin-right: .5em;
+  border-radius: 50%;
 }
 
 #login-link {
