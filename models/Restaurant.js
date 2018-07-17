@@ -20,7 +20,10 @@ restaurantSchema.set("toObject", {
         name: ret.name,
         reward: ret.reward,
         lat: ret.lat,
-        lng: ret.lng
+        lng: ret.lng,
+        address: ret.address,
+        img: ret.img,
+        genre: ret.genre
       }
       return returnJson;
     }
