@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import ReactMapboxGl, { Layer, Feature, Marker } from "react-mapbox-gl";
+import ReactMapboxGl, { Layer, Feature, Marker, Popup } from "react-mapbox-gl";
 import {Link} from 'react-router-dom';
 
 class Home extends Component {
@@ -25,17 +25,23 @@ class Home extends Component {
     })
     
     let markerArray = this.props.restaurants.map(restaurant => {
-      return (<Marker
+      return (<div>
+              <Marker
                 coordinates={[restaurant.lng, restaurant.lat]}
                 anchor="bottom">
                 <img id='map-icon' src='https://cdn.onlinewebfonts.com/svg/img_198790.png'/>
-              </Marker>)
+              </Marker>
+              <Popup
+              coordinates={[restaurant.lng, restaurant.lat]}
+              offset={{'bottom-left': [12, -38],  'bottom': [0, -38], 'bottom-right': [-12, -38]}}>
+              <Link to={"/restaurant/" + restaurant._id}>{restaurant.name}</Link>
+              </Popup>
+              </div>)
     })
 
     return (
       <div className="home-container">
         <h4>Collect and use loyalty cards from all your favorite restaurants and food trucks!</h4>
-        <Link to={"/restaurant/5b4d2f0e6f6a124f40312e66"}>Restaurant Check</Link>
         <form onSubmit={this.handleSubmit}>
           <TextField
             id="search"
