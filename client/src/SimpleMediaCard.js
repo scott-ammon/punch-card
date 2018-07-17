@@ -31,7 +31,7 @@ function SimpleMediaCard(props) {
           title="Restaurant punch-card"
         />
         <CardContent>
-          <Typography gutterBottom variant="headline" component="h2">
+          <Typography gutterBottom variant="headline" component="h4">
             {props.restaurant.name}
           </Typography>
         </CardContent>
