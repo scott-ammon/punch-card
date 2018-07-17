@@ -6,7 +6,6 @@ const User = require('../models/User');
 
 // GET - Finds all cards associated with current user
 router.post("/cards/all", (req, res) => {
-  console.log("req.body is: ", req.body);
   User.findOne({email: req.body.user.email}).populate("cards").exec(function(err, user) {
     res.json(user.cards);
   })
@@ -45,8 +44,9 @@ router.post("/cards/:id", (req, res) => {
 })
 
 // DELETE - Removes a card from the current user's cards array.
-router.delete("/cards/:id", (req, res) => {
-  User.findByIdAndUpdate("5b4c5655fdd5f169c5e3a0d5", 
+router.delete("/cards/:id/:user", (req, res) => {
+  console.log('delete route hit!!');
+  User.findByIdAndUpdate(req.params.user, 
   {$pull: {cards: req.params.id}}, {new: true}, function(err, user) {
     console.log("err:", err);
     console.log("user:", user);
@@ -55,6 +55,7 @@ router.delete("/cards/:id", (req, res) => {
         console.log(err)
       } else {
         console.log(card)
+        res.sendStatus(200);
       }
     });
   });
