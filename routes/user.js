@@ -47,8 +47,14 @@ router.delete("/cards/:id", (req, res) => {
   {$pull: {cards: req.params.id}}, {new: true}, function(err, user) {
     console.log("err:", err);
     console.log("user:", user);
-    res.json(user);
+    Card.findByIdAndRemove(req.params.id, function(err, card) {
+      if (err) {
+        console.log(err)
+      } else {
+        console.log(card)
+      }
+    });
   });
-});
+})
 
 module.exports = router;
