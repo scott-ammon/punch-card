@@ -44,24 +44,11 @@ class Cards extends Component {
     })
 
     return(
-    // let cardsList = this.state.cards.map((card, i) => {
-      // return(
         <div>
+          <h4>My Cards:</h4>
           {cardPreviews}
         </div>
-      // )
-    // }
-  )
-
-//
-//     return (
-//       <div>
-//         <h1>My Cards</h1>
-//         <div>
-//
-//         </div>
-//       </div>
-//     )
+    )
   }
 }
 
