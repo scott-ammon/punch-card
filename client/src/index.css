@@ -5,25 +5,49 @@ body {
 }
 
 .map-wrapper {
-	margin-top: 25px auto 0 auto;
-	width: 60vw;
-	height: 60vh;
+  width: 90vw;
+  margin: 25px auto 0 auto;
+  text-align: center;
 }
 
-.map {
-  width: 100%;
-  height: 100%;
-}
-
-.mapboxgl-canvas {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-}
 
 #search-btn {
 	margin-left: 1em;
 }
 
+#headline {
+  text-decoration: none;
+}
+
+.nameField, 
+.emailField,
+.passwordField {
+  width: 90vw;
+}
+
+.home-container {
+  width: 90vw;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.form-container {
+  width: 90vw;
+  margin: 0 auto;
+  text-align: right;
+}
+
+.alert-msg {
+  color: red;
+  text-align: center;
+}
+
+.signup-header {
+  margin-top: 50px;
+  text-align: center;
+}
+
+#login-link {
+  margin-top: 25px;
+  text-align: center;
+}
