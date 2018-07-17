@@ -1,6 +1,7 @@
 import React, {Component, Link} from 'react';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
+import {withRouter} from 'react-router-dom';
 
 class Restaurant extends Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class Restaurant extends Component {
         restaurant: restaurant._id
       }).then(result => {
         console.log(result)
+        this.props.history.push("/cards");
       })
     }
 
@@ -36,8 +38,8 @@ class Restaurant extends Component {
         <h4>{restaurant.genre}</h4>
         <h4>Card Reward: {restaurant.reward}</h4>
         <div>
-          <form onSubmit={(e) => this.handleSubmit(restaurant)}>
-            <Button component={Link} to="/cards" variant="contained" color="primary" type="submit">Add new card!</Button>
+          <form onSubmit={(e) => this.handleSubmit(e, restaurant)}>
+            <Button variant="contained" color="primary" type="submit">Add new card!</Button>
           </form>
         </div>
       </div>
@@ -45,4 +47,4 @@ class Restaurant extends Component {
   }
 }
 
-export default Restaurant
+export default withRouter(Restaurant)
