@@ -43,11 +43,12 @@ router.post("/cards/:id", (req, res) => {
 
 // DELETE - Removes a card from the current user's cards array.
 router.delete("/cards/:id", (req, res) => {
-  User.findOne({email: "xy@xy.com"}, function(err, user) {
-    user.update({
-      $pull: {cards: {$in: [req.params.id]}}
-    })
-  })
-})
+  User.findByIdAndUpdate("5b4c5655fdd5f169c5e3a0d5", 
+  {$pull: {cards: req.params.id}}, {new: true}, function(err, user) {
+    console.log("err:", err);
+    console.log("user:", user);
+    res.json(user);
+  });
+});
 
 module.exports = router;
