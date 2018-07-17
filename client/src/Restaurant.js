@@ -8,7 +8,7 @@ class Restaurant extends Component {
     super(props)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
-  
+
   handleSubmit(e, restaurant) {
       e.preventDefault()
       console.log(this.props.user)
@@ -34,12 +34,12 @@ class Restaurant extends Component {
         <div>
           <img id="restaurant-img" src={restaurant.img}/>
         </div>
-        <h4>Location: {restaurant.address}</h4>
-        <h4>{restaurant.genre}</h4>
-        <h4>Card Reward: {restaurant.reward}</h4>
-        <div>
+        <h4 className="restaurantText">Location: {restaurant.address}</h4>
+        <h4 className="restaurantText">{restaurant.genre}</h4>
+        <h4 className="restaurantText">Card Reward: {restaurant.reward}</h4>
+        <div className="addCard">
           <form onSubmit={(e) => this.handleSubmit(e, restaurant)}>
-            <Button variant="contained" color="primary" type="submit">Add new card!</Button>
+            <Button variant="contained" color="primary" type="submit" id="newCard">Add new card!</Button>
           </form>
         </div>
       </div>
