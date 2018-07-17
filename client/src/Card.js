@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import {Link} from "react-router-dom";
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
 
 class Card extends Component {
   constructor(props) {
@@ -24,18 +27,32 @@ class Card extends Component {
 
     return (
       <div>
-        <h1>Restaurant Name</h1>
-        <p>8 punches to get a free sandwich</p>
-        <div>
-          1 2 3 4 5 6 7 8 9 10
-        </div>
-        <div>
-          <input placeholder="enter code to punch"/>
-          <a>Redeem</a>
-        </div>
-        <div>
-          <a>Remove Card</a>
-        </div>
+        <Grid container justify="center" direction="column" alignItems="center">
+          <h1>Restaurant Name</h1>
+          <p>8 punches to get a free sandwich</p>
+          <div>
+            1 2 3 4 5 6 7 8 9 10
+          </div>
+          <div>
+          <TextField
+            id="code"
+            name="code"
+            label="enter code to punch..."
+            className="codeField"
+            value={this.state.code}
+            onChange={this.handleInputChange}
+            margin="normal"
+          />
+            <Button variant="contained" color="primary">
+              Redeem
+            </Button>
+          </div>
+          <div>
+            <Button variant="contained" color="secondary">
+              Remove Card
+            </Button>
+          </div>
+        </Grid>
       </div>
     )
   }
