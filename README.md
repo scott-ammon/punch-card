@@ -1,10 +1,10 @@
 # punch-card
 
 ## Description
-Many restaurants provide punchcards to increase customer loyality. For example if you purchase 9 entrees at a specific restaurant the 10th purchase will be 50% off. However, these physical punchcards are easy to lose. With the punch card application, you won't have to keep track of all your different punch cards or worry about losing them. All your punch cards can be used and stoted on your user account. This will be beneficial for participating restaurants as well because their guests will be more likely to redeem their punch cards, which will increase loyality to the restaurant.
+Many restaurants provide punchcards to increase customer loyalty. For example if you purchase 9 entrees at a specific restaurant the 10th purchase will be 50% off. However, these physical punchcards are easy to lose. With the punch card application, you won't have to keep track of all your different punch cards or worry about losing them. All your punch cards can be used and stored on your user account. This will be beneficial for participating restaurants as well because their guests will be more likely to redeem their punch cards, which will increase loyalty to the restaurant.
 
 ## User Stories
-As a frequent restaurant guest, I want to remember to redeem my punchcards, so I can recieve my discounts at my favorite restaurants.
+As a frequent restaurant guest, I want to remember to redeem my punchcards, so I can receive my discounts at my favorite restaurants.
 
 ## Technologies used
 1. HTML
@@ -64,7 +64,7 @@ Here is our original map of our models:
 
 ![punch-card-model](https://user-images.githubusercontent.com/34433863/42727157-415f56fa-8756-11e8-811d-a19c2ae031d1.png)
 
-Once we got all of that initial planning done for the project, our next step was setting up our model files using MongoDB. This proved to be somewhat difficult because creating associations in Mongoose is a bit of a challenge. Next, we divided up the rest of the tasks including building: React components, Express routes, UX-Design, and continuing to update data in our databases. In addition, to keep us organized while progressing through our tasks, we used a trello board. [I'm an inline-style link](https://trello.com/b/fe0emLn3/ga-project-3)
+Once we got all of that initial planning done for the project, our next step was setting up our model files using MongoDB. This proved to be somewhat difficult because creating associations in Mongoose is a bit of a challenge. Next, we divided up the rest of the tasks including building: React components, Express routes, UX-Design, and continuing to update data in our databases. In addition, to keep us organized while progressing through our tasks, we used a trello board. [Trello Board](https://trello.com/b/fe0emLn3/ga-project-3)
 
 ### Early Progress Screen Shots
 
