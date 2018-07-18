@@ -60,7 +60,7 @@ class Card extends Component {
       punchedArray.push(<div className="punched"></div>)
     }
 
-    var unPunched = this.state.card.reqPunches - punched
+    var unPunched = this.state.restaurant.reqPunches - punched
     for (let i = 0; i < unPunched; i++) {
       unPunchedArray.push(<div className="punch"></div>)
     }

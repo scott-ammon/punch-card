@@ -18,8 +18,7 @@ router.post("/cards", (req, res) => {
     User.findOne({email: req.body.user.email}, function(err, user) {
       Card.create({
           restaurant: req.body.restaurant,
-          punches: 2,
-          reqPunches: 6
+          punches: 0
       }, function(err, card) {
           console.log(card);
           user.cards.push(card._id)
