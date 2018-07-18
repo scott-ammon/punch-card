@@ -15,19 +15,19 @@ const restaurantSchema = new mongoose.Schema({
 })
 
 restaurantSchema.set("toObject", {
-    transform: function(doc, ret, options) {
-      let returnJson = {
-        _id: ret._id,
-        name: ret.name,
-        reward: ret.reward,
-        lat: ret.lat,
-        lng: ret.lng,
-        address: ret.address,
-        img: ret.img,
-        genre: ret.genre,
-        reqPunches: ret.reqPunches
-      }
-      return returnJson;
+  transform: function(doc, ret, options) {
+    let returnJson = {
+      _id: ret._id,
+      name: ret.name,
+      reward: ret.reward,
+      lat: ret.lat,
+      lng: ret.lng,
+      address: ret.address,
+      img: ret.img,
+      genre: ret.genre,
+      reqPunches: ret.reqPunches
+    }
+    return returnJson;
     }
   });
 

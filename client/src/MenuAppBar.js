@@ -40,6 +40,7 @@ class MenuAppBar extends React.Component {
     this.setState({ anchorEl: null })
   }
 
+  // Call logout function passed as props and close menu
   handleLogoutAndClose = () => {
     this.setState({ anchorEl: null })
     this.props.logout()
