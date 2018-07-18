@@ -11,7 +11,9 @@ class Card extends Component {
     super(props)
     this.state = {
       restaurant: {},
-      card: {}
+      card: {},
+      response: null,
+      rewardInput: ""
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -19,7 +21,7 @@ class Card extends Component {
 
   handleChange(e) {
     this.setState({
-      search: e.target.value
+      rewardInput: e.target.value
     })
   }
   
@@ -29,6 +31,25 @@ class Card extends Component {
       axios.delete("/user/cards/" + this.props.match.params.id + "/" + this.props.user._id).then(result => {
         console.log(result)
         this.props.history.push("/cards");
+      })
+    }
+
+    punchCard(e) {
+      e.preventDefault()
+      axios.put("/user/card/" + this.props.match.params.id, {
+        restaurantId: this.state.restaurant._id,
+        rewardCode: this.state.rewardInput,
+        punches: this.state.card.punches
+      }).then(result => {
+        if (result.data.hasOwnProperty("error")) {
+          this.setState({
+            response: result.data
+          })
+        } else {
+          this.setState({
+            card: result.data
+          })
+        }
       })
     }
 
@@ -74,9 +95,11 @@ class Card extends Component {
             {punchedArray}
             {unPunchedArray}
           </div>
+          <form onSubmit={this.punchCard}>
             <TextField
-              placeholder="enter code to punch..." id="codeInput" underlineStyle={{display: 'none'}}
+              placeholder="enter code to punch..." id="codeInput" underlineStyle={{display: 'none'}} onChange={this.handleChange}
             />
+          </form>
               <Button variant="contained" color="primary">
                 Redeem
               </Button>

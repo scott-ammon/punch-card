@@ -43,6 +43,23 @@ router.post("/cards/:id", (req, res) => {
   })
 })
 
+router.put("/cards/:id", (req, res) => {
+  // Find a restaurant by id passed in
+  Restaurant.findOne({_id: req.body.restuarantId}, function(err, restaurant) {
+    if (restaurant.authenticated(req.body.rewardCode)) {
+      Card.findOneAndUpdate({_id: req.params.id}, {punches: req.body.punches + 1}, function(err, card) {
+          if (err) {
+            console.log(err)
+          } else {
+            res.json(card)
+          }
+      })
+    } else {
+      res.json({error: "Invalid Code"})
+    }
+  })
+})
+
 // DELETE - Removes a card from the current user's cards array.
 router.delete("/cards/:id/:user", (req, res) => {
   console.log('delete route hit!!');
