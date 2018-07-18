@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import SimpleMediaCard from './SimpleMediaCard';
+import {Link} from "react-router-dom";
 
 class Cards extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class Cards extends Component {
           return restaurant._id === card.restaurant
         }))
       })
-        
+
       this.setState({
         cards: cards,
         restaurantArray: restaurantArray,
@@ -43,9 +44,18 @@ class Cards extends Component {
       return (<SimpleMediaCard cardId={this.state.cardIds[i]} restaurant={restaurant}/>)
     })
 
+    let zeroCards = this.state.cards.length === 0 || this.state.cards.length === undefined ? (
+      <div>
+        <h4>You have no cards added</h4>
+        <Link to={"/"}>View Restaurants</Link>
+      </div>
+    ) : null;
+    console.log('cards length', this.state.cards.length)
+
     return(
         <div>
           <h4>My Cards:</h4>
+          {zeroCards}
           {cardPreviews}
         </div>
     )
