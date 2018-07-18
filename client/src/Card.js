@@ -11,15 +11,18 @@ class Card extends Component {
     super(props)
     this.state = {
       restaurant: {},
-      card: {}
+      card: {},
+      response: "",
+      rewardInput: ""
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.punchCard = this.punchCard.bind(this)
   }
 
   handleChange(e) {
     this.setState({
-      search: e.target.value
+      rewardInput: e.target.value
     })
   }
   
@@ -29,6 +32,27 @@ class Card extends Component {
       axios.delete("/user/cards/" + this.props.match.params.id + "/" + this.props.user._id).then(result => {
         console.log(result)
         this.props.history.push("/cards");
+      })
+    }
+
+    punchCard(e) {
+      e.preventDefault()
+      console.log(this.props.rewardInput)
+      axios.put("/user/cards/" + this.props.match.params.id, {
+        restaurantId: this.state.restaurant._id,
+        rewardCode: this.state.rewardInput,
+        punches: this.state.card.punches
+      }).then(result => {
+        if (result.data.hasOwnProperty("error")) {
+          this.setState({
+            response: result.data
+          })
+        } else {
+          this.setState({
+            card: result.data,
+            response: null
+          })
+        }
       })
     }
 
@@ -60,7 +84,7 @@ class Card extends Component {
       punchedArray.push(<div className="punched"></div>)
     }
 
-    var unPunched = this.state.card.reqPunches - punched
+    var unPunched = this.state.restaurant.reqPunches - punched
     for (let i = 0; i < unPunched; i++) {
       unPunchedArray.push(<div className="punch"></div>)
     }
@@ -74,18 +98,19 @@ class Card extends Component {
             {punchedArray}
             {unPunchedArray}
           </div>
+          <form onSubmit={this.punchCard}>
             <TextField
-              placeholder="enter code to punch..." id="codeInput" underlineStyle={{display: 'none'}}
+              placeholder="enter code to punch..." id="codeInput" underlineStyle={{display: 'none'}} onChange={this.handleChange}
             />
-              <Button variant="contained" color="primary">
-                Redeem
-              </Button>
-        </div>
-          <form className="removeCardButton" onSubmit={this.handleSubmit}>
-            <Button type="submit" variant="contained" color="secondary" alignItems="flex-end">
-              Remove Card
+            <Button type="submit" variant="contained" color="primary">
+              Redeem
             </Button>
           </form>
+          </div>
+          <form className="removeCardButton" onSubmit={this.handleSubmit}>
+            <Button type="submit" variant="contained" color="secondary" alignItems="flex-end">Remove Card</Button>
+          </form>
+          <h5>{this.state.response.error}</h5>
       </div>
     )
   }

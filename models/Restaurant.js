@@ -11,6 +11,7 @@ const restaurantSchema = new mongoose.Schema({
   lat: Number,
   lng: Number,
   rewardCode: String,
+  reqPunches: Number
 })
 
 restaurantSchema.set("toObject", {
@@ -23,7 +24,8 @@ restaurantSchema.set("toObject", {
         lng: ret.lng,
         address: ret.address,
         img: ret.img,
-        genre: ret.genre
+        genre: ret.genre,
+        reqPunches: ret.reqPunches
       }
       return returnJson;
     }

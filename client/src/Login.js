@@ -51,17 +51,18 @@ class Login extends Component {
   render() {
     console.log("Logged In State Variable: ", this.state.loggedIn)
     return(
+      //This div is a Material UI container, with Login form text boxes and a button.
       <div className="form-container">
         <form onSubmit={this.handleSubmit}>
           <TextField
-              id="email"
-              name="email"
-              label="Email"
-              className="emailField"
-              value={this.state.email}
-              onChange={this.handleInputChange}
-              margin="normal"
-            /><br />
+            id="email"
+            name="email"
+            label="Email"
+            className="emailField"
+            value={this.state.email}
+            onChange={this.handleInputChange}
+            margin="normal"
+          /><br />
           <TextField
             id="password"
             name="password"
@@ -71,8 +72,7 @@ class Login extends Component {
             value={this.state.password}
             onChange={this.handleInputChange}
             margin="normal"
-          />
-          <br />
+          /><br />
           <Button id="login-btn" variant="contained" color="primary" type="submit" value="Log In">Log In</Button>
         </form>
         <div id="login-link">
