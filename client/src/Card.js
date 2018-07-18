@@ -12,11 +12,12 @@ class Card extends Component {
     this.state = {
       restaurant: {},
       card: {},
-      response: null,
+      response: "",
       rewardInput: ""
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.punchCard = this.punchCard.bind(this)
   }
 
   handleChange(e) {
@@ -36,7 +37,8 @@ class Card extends Component {
 
     punchCard(e) {
       e.preventDefault()
-      axios.put("/user/card/" + this.props.match.params.id, {
+      console.log(this.props.rewardInput)
+      axios.put("/user/cards/" + this.props.match.params.id, {
         restaurantId: this.state.restaurant._id,
         rewardCode: this.state.rewardInput,
         punches: this.state.card.punches
@@ -47,7 +49,8 @@ class Card extends Component {
           })
         } else {
           this.setState({
-            card: result.data
+            card: result.data,
+            response: null
           })
         }
       })
@@ -99,16 +102,17 @@ class Card extends Component {
             <TextField
               placeholder="enter code to punch..." id="codeInput" underlineStyle={{display: 'none'}} onChange={this.handleChange}
             />
+            <Button type="submit" variant="contained" color="primary">
+              Redeem
+            </Button>
           </form>
-              <Button variant="contained" color="primary">
-                Redeem
-              </Button>
         </div>
           <form className="removeCardButton" onSubmit={this.handleSubmit}>
             <Button type="submit" variant="contained" color="secondary" alignItems="flex-end">
               Remove Card
             </Button>
           </form>
+          {this.state.response}
       </div>
     )
   }

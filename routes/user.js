@@ -44,10 +44,14 @@ router.post("/cards/:id", (req, res) => {
 })
 
 router.put("/cards/:id", (req, res) => {
+  console.log("Hit PUT route!")
+  console.log("This is the body:", req.body)
   // Find a restaurant by id passed in
-  Restaurant.findOne({_id: req.body.restuarantId}, function(err, restaurant) {
+  Restaurant.findOne({_id: req.body.restaurantId}, function(err, restaurant) {
+    console.log("Body in finding Restaurant", req.body.rewardCode)
     if (restaurant.authenticated(req.body.rewardCode)) {
-      Card.findOneAndUpdate({_id: req.params.id}, {punches: req.body.punches + 1}, function(err, card) {
+      Card.findOneAndUpdate({_id: req.params.id}, {punches: req.body.punches + 1}, {new: true}, function(err, card) {
+        console.log(card)
           if (err) {
             console.log(err)
           } else {
