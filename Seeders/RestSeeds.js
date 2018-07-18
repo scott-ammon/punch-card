@@ -93,7 +93,7 @@ const restSeeds = [
   }
 ];
 
-Restaurant.insertMany(restSeeds, (err, docs) => {
+Restaurant.create(restSeeds, (err, docs) => {
   console.log(err);
   console.log(docs);
 })
