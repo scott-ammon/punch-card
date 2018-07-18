@@ -106,11 +106,9 @@ class Card extends Component {
               Redeem
             </Button>
           </form>
-        </div>
+          </div>
           <form className="removeCardButton" onSubmit={this.handleSubmit}>
-            <Button type="submit" variant="contained" color="secondary" alignItems="flex-end">
-              Remove Card
-            </Button>
+            <Button type="submit" variant="contained" color="secondary" alignItems="flex-end">Remove Card</Button>
           </form>
           <h5>{this.state.response.error}</h5>
       </div>
