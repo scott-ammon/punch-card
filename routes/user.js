@@ -18,8 +18,7 @@ router.post("/cards", (req, res) => {
     User.findOne({email: req.body.user.email}, function(err, user) {
       Card.create({
           restaurant: req.body.restaurant,
-          punches: 2,
-          reqPunches: 6
+          punches: 0
       }, function(err, card) {
           console.log(card);
           user.cards.push(card._id)
@@ -41,6 +40,27 @@ router.post("/cards/:id", (req, res) => {
     match: {_id: req.params.id}
   }).exec(function(err, user) {
     res.json(user.cards);
+  })
+})
+
+router.put("/cards/:id", (req, res) => {
+  console.log("Hit PUT route!")
+  console.log("This is the body:", req.body)
+  // Find a restaurant by id passed in
+  Restaurant.findOne({_id: req.body.restaurantId}, function(err, restaurant) {
+    console.log("Body in finding Restaurant", req.body.rewardCode)
+    if (restaurant.authenticated(req.body.rewardCode)) {
+      Card.findOneAndUpdate({_id: req.params.id}, {punches: req.body.punches + 1}, {new: true}, function(err, card) {
+        console.log(card)
+          if (err) {
+            console.log(err)
+          } else {
+            res.json(card)
+          }
+      })
+    } else {
+      res.json({error: "Invalid Code"})
+    }
   })
 })
 
