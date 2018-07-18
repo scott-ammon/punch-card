@@ -12,7 +12,7 @@ class Home extends Component {
     }
     this.handleChange = this.handleChange.bind(this)
   }
-  
+
   handleChange(e) {
     this.setState({
       search: e.target.value
@@ -23,13 +23,13 @@ class Home extends Component {
     const Map = ReactMapboxGl({
       accessToken: this.props.mapboxKey
     })
-    
+
     let markerArray = this.props.restaurants.map(restaurant => {
       return (<div>
               <Marker
                 coordinates={[restaurant.lng, restaurant.lat]}
                 anchor="bottom">
-                <img id='map-icon' src='https://cdn.onlinewebfonts.com/svg/img_198790.png'/>
+                <img id='map-icon' alt= 'icon-logo for webpage' src='https://cdn.onlinewebfonts.com/svg/img_198790.png'/>
               </Marker>
               <Popup
               coordinates={[restaurant.lng, restaurant.lat]}
