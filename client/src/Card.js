@@ -102,15 +102,11 @@ class Card extends Component {
             <TextField
               placeholder="enter code to punch..." id="codeInput" underlineStyle={{display: 'none'}} onChange={this.handleChange}
             />
-<<<<<<< HEAD
-              <Button variant="contained" color="primary">Redeem</Button>
-=======
             <Button type="submit" variant="contained" color="primary">
               Redeem
             </Button>
           </form>
->>>>>>> 9ad46d2a61b39bc33d4026c798cde0f10edaab64
-        </div>
+          </div>
           <form className="removeCardButton" onSubmit={this.handleSubmit}>
             <Button type="submit" variant="contained" color="secondary" alignItems="flex-end">Remove Card</Button>
           </form>
