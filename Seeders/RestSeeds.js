@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/jwtAuth');
 var Restaurant = require('../models/Restaurant');
+//We require mongoose.
+//We connect to the local host under jwt so the different users can access different seeds.
+//We require the model, so the data is populated in the db.
 
+//Set the Array of objects to a const.
 const restSeeds = [
   {
     name: 'The Capital Grille',
@@ -85,6 +89,8 @@ const restSeeds = [
   }
 ];
 
+//Use the insertMany function to seed to the db.
+//This must be run in node.
 Restaurant.insertMany(restSeeds, (err, docs) => {
   console.log(err);
   console.log(docs);
