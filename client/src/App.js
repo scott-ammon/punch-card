@@ -6,7 +6,6 @@ import Signup from './Signup';
 import Home from './Home';
 import Restaurant from "./Restaurant";
 import MenuAppBar from './MenuAppBar';
-import {Link} from "react-router-dom";
 import Card from './Card';
 import Cards from './Cards';
 
