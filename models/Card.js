@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const cardSchema = new mongoose.Schema({
-	restaurant: {type: mongoose.Schema.Types.ObjectId, ref: 'Restaurant'},
+  restaurant: {type: mongoose.Schema.Types.ObjectId, ref: 'Restaurant'},
   punches: Number
 })
 

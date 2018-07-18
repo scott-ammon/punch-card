@@ -9,16 +9,17 @@ class Restaurant extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  // Add this restaurant card to the user's cards
   handleSubmit(e, restaurant) {
-      e.preventDefault()
-      console.log(this.props.user)
-      axios.post("/user/cards", {
-        user: this.props.user,
-        restaurant: restaurant._id
-      }).then(result => {
-        console.log(result)
-        this.props.history.push("/cards");
-      })
+    e.preventDefault()
+    console.log(this.props.user)
+    axios.post("/user/cards", {
+      user: this.props.user,
+      restaurant: restaurant._id
+    }).then(result => {
+      console.log(result)
+      this.props.history.push("/cards");
+    })
     }
 
   render() {

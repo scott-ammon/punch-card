@@ -13,14 +13,15 @@ class Cards extends Component {
     }
   }
 
+  // Retrieve user's cards on mount
   componentDidMount() {
-    // console.log("USER IS:", this.props.user)
     axios.post("/user/cards/all", {
       user: this.props.user
     }).then(cards => {
       var restaurantArray = []
       var cardIds = []
 
+      // Obtain restaurants associated with the user's cards
       cards.data.forEach(card => {
         restaurantArray.push(this.props.restaurants.find((restaurant) => {
           if(restaurant._id === card.restaurant) {
@@ -29,7 +30,7 @@ class Cards extends Component {
           return restaurant._id === card.restaurant
         }))
       })
-
+      // Save these restaurants and cards to state
       this.setState({
         cards: cards,
         restaurantArray: restaurantArray,
@@ -39,21 +40,18 @@ class Cards extends Component {
   }
 
   render() {
-    // console.log(this.state.restaurantArray);
+    // Create Material UI Cards for each restaurant card
     const cardPreviews = this.state.restaurantArray.map((restaurant, i) => {
       return (<SimpleMediaCard cardId={this.state.cardIds[i]} restaurant={restaurant}/>)
     })
 
-    console.log("cards is:", this.state.cards.data)
-
+    // Conditionally render cards or message telling user they have no cards
     let zeroCards = (!this.state.cards.data || this.state.cards.data.length === 0) ? (
       <div>
         <h4>You have no cards added</h4>
         <Link to={"/"} className="restaurantLink">View Restaurants</Link>
       </div>
     ) : (<div></div>);
-
-    console.log("JSX for cards:", zeroCards)
 
     return(
         <div className="home-container cardPage">
