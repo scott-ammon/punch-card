@@ -77,14 +77,10 @@ class Card extends Component {
             <TextField
               placeholder="enter code to punch..." id="codeInput" underlineStyle={{display: 'none'}}
             />
-              <Button variant="contained" color="primary">
-                Redeem
-              </Button>
+              <Button variant="contained" color="primary">Redeem</Button>
         </div>
           <form className="removeCardButton" onSubmit={this.handleSubmit}>
-            <Button type="submit" variant="contained" color="secondary" alignItems="flex-end">
-              Remove Card
-            </Button>
+            <Button type="submit" variant="contained" color="secondary" alignItems="flex-end">Remove Card</Button>
           </form>
       </div>
     )
