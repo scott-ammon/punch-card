@@ -6,6 +6,8 @@ Many restaurants provide punchcards to increase customer loyalty. For example if
 ## User Stories
 As a frequent restaurant guest, I want to remember to redeem my punchcards, so I can receive my discounts at my favorite restaurants.
 
+When a user visits PunchCard they view a map on the home page that displays all participating restaurants. To take advantage of the punch card opportunities the user can either sign up for an account or log in if they already have an account. Once a user is logged in, they can build up their profile with punch cards by adding them from the restaurant page. If the user goes to visit a restaurant and makes the right purchase, they will be provided with a code on their receipt. Next, the user can input that code into the textfield at the bottom of the card show page. Once that has been done, 1 hole will be punched in the card. If the user achieved the required amount of punches, they can then receive a predetermined promotion from the restaurant. A user can add or remove as many punch cards from their profile as they like.
+
 ## Technologies used
 1. HTML
 2. CSS
