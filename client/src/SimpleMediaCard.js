@@ -23,7 +23,7 @@ function SimpleMediaCard(props) {
   const { classes } = props;
   const url = "/card/" + props.cardId
   return (
-    <div style={{width: '70%', margin: '10px auto'}}>
+    <div className="theCards" style={{}}>
       <Card style={{"justify-content": "center"}} className={classes.card}>
         <CardMedia
           className={classes.media}
