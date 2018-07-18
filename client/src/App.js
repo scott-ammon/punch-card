@@ -102,7 +102,6 @@ class App extends Component {
           <div className="App">
             <MenuAppBar user={user} logout={this.logout}/>
             <Route exact path="/" component = {() => <Home mapboxKey={this.state.mapboxKey} restaurants={this.state.restaurants}/>} />
-
             <Route exact path="/signup" component = {() => <Signup liftToken={this.liftTokenToState} />} />
             <Route exact path="/login" component = {() => <Login liftToken={this.liftTokenToState} />} />
             <Route exact path="/restaurant/:id" component = {(props) => <Restaurant user={user} restaurants={this.state.restaurants} {...props}/>} />

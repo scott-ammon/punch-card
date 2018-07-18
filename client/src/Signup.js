@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-// import {Link} from 'react-router-dom';
 import {withRouter} from "react-router-dom";
 
 class Signup extends Component {
@@ -64,6 +63,7 @@ class Signup extends Component {
 
   render() {
     return(
+      //This div is a Material UI container, with Signup form text boxes and a button.
       <div className="form-container">
         <div className="signup-header">
           <h4>Sign up now to start collecting rewards at all your favorite restaurants and food trucks!</h4>
