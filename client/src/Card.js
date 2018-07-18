@@ -10,7 +10,8 @@ class Card extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      search: null
+      restaurant: {},
+      card: {}
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -31,38 +32,47 @@ class Card extends Component {
       })
     }
 
+    componentDidMount() {
+      axios.post("/user/cards/" + this.props.match.params.id, {
+        user: this.props.user
+      }).then(card => {
+        console.log("Card is", card)
+        console.log("All Rest", this.props.restaurants)
+        var restaurant = this.props.restaurants.find(restaurant => {
+          console.log(restaurant._id + "Is equal to?" + card.data[0].restaurant)
+          return restaurant._id === card.data[0].restaurant
+        })
+        console.log("This is restaurant", restaurant)
+        this.setState({
+          restaurant,
+          card: card.data[0]
+        })
+      })
+    }
+
   render() {
 
-    // let card = this.props.cards.find((card) => {
-    //       return card.id === parseInt(this.props.match.params.id)
-    //     })
+    var punchedArray = []
+    var unPunchedArray = []
+
+    var punched = this.state.card.punches
+    for (let i = 0; i < punched; i++) {
+      punchedArray.push(<div className="punched"></div>)
+    }
+
+    var unPunched = this.state.card.reqPunches - punched
+    for (let i = 0; i < unPunched; i++) {
+      unPunchedArray.push(<div className="punch"></div>)
+    }
 
     return (
       <div className="home-container">
         <div className="card-container">
-          <h1 className="restaurantName">Restaurant Name</h1>
-          <p className="reqPunches">10 punches to get a free sandwich!</p>
+          <h1 className="restaurantName">{this.state.restaurant.name}</h1>
+          <p className="reqPunches">{this.state.restaurant.reward}</p>
           <div className="numberOfPunches">
-            <div className="one punch">
-            </div>
-            <div className="two punch">
-            </div>
-            <div className="three punch">
-            </div>
-            <div className="four punch">
-            </div>
-            <div className="five punch">
-            </div>
-            <div className="six punch">
-            </div>
-            <div className="seven punch">
-            </div>
-            <div className="eight punch">
-            </div>
-            <div className="nine punch">
-            </div>
-            <div className="ten punch">
-            </div>
+            {punchedArray}
+            {unPunchedArray}
           </div>
             <TextField
               placeholder="enter code to punch..." id="codeInput" underlineStyle={{display: 'none'}}

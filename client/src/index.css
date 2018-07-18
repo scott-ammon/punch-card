@@ -104,6 +104,16 @@ body {
   border-radius: 50%;
 }
 
+.punched {
+  display: inline-block;
+  width: 1em;
+  border: 1px solid black;
+  height: 1em;
+  margin-right: .5em;
+  border-radius: 50%;
+  background-color: black;
+}
+
 .restaurantText {
   text-align: left;
   width: 20em;
