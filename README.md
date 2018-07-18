@@ -28,7 +28,7 @@ The first thing that we did in our group was a appoint a git master. We all deci
 ![](https://files.slack.com/files-pri/T0351JZQ0-FBRT744EB/screen_shot_2018-07-15_at_9.47.00_am.png)
 
 ### Final Wireframes
-![](https://files.slack.com/files-pri/T0351JZQ0-FBS0DLZPH/screen_shot_2018-07-15_at_7.46.44_pm.png)
+We built wireframes in Adobe XD, linked here: [wireframes](https://xd.adobe.com/view/f35c8478-fcf1-4373-5be1-50391b61f632-856d/?hints=off)
 
 After we wireframed all of our pages and then proceeded to map out the server side routes as well as the client side routes.
 

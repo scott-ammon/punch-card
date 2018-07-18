@@ -22,11 +22,11 @@ class Restaurant extends Component {
     }
 
   render() {
-    var restaurant = this.props.restaurants.find((restaurant) => {
+    const restaurant = this.props.restaurants.find((restaurant) => {
       return restaurant._id === this.props.match.params.id
     })
 
-    console.log(restaurant);
+    const button = this.props.user ? (<Button variant="contained" color="primary" type="submit" id="newCard">Add card!</Button>) : ("")
 
     return (
       <div className="home-container">
@@ -39,7 +39,7 @@ class Restaurant extends Component {
         <h4 className="restaurantText">Card Reward: {restaurant.reward}</h4>
         <div className="addCard">
           <form onSubmit={(e) => this.handleSubmit(e, restaurant)}>
-            <Button variant="contained" color="primary" type="submit" id="newCard">Add new card!</Button>
+            {button}
           </form>
         </div>
       </div>
