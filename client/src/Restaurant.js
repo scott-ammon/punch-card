@@ -32,7 +32,7 @@ class Restaurant extends Component {
       <div className="home-container">
         <h1>{restaurant.name}</h1>
         <div>
-          <img id="restaurant-img" src={restaurant.img}/>
+          <img id="restaurant-img" alt="Image of Restaurant offering card" src={restaurant.img}/>
         </div>
         <h4 className="restaurantText">Location: {restaurant.address}</h4>
         <h4 className="restaurantText">{restaurant.genre}</h4>
