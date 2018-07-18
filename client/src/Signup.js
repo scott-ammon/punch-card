@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import {withRouter} from "react-router-dom";
 
 class Signup extends Component {
   constructor(props) {
@@ -56,11 +57,13 @@ class Signup extends Component {
           })
         }
       })
+      this.props.history.push("/cards")
     }
   }
 
   render() {
     return(
+      //This div is a Material UI container, with Signup form text boxes and a button.
       <div className="form-container">
         <div className="signup-header">
           <h4>Sign up now to start collecting rewards at all your favorite restaurants and food trucks!</h4>
@@ -69,6 +72,7 @@ class Signup extends Component {
           <TextField
             id="name"
             name="name"
+            type="text"
             label="Name"
             className="nameField"
             value={this.state.name}
@@ -78,6 +82,7 @@ class Signup extends Component {
           <TextField
             id="email"
             name="email"
+            type="text"
             label="Email"
             className="emailField"
             value={this.state.email}
@@ -87,6 +92,7 @@ class Signup extends Component {
           <TextField
             id="password"
             name="password"
+            type="password"
             label="Password"
             className="passwordField"
             value={this.state.password}
@@ -101,4 +107,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup
+export default withRouter(Signup)
