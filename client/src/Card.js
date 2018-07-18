@@ -41,24 +41,30 @@ class Card extends Component {
         reqPunches: this.state.restaurant.reqPunches,
         punches: this.state.punches
       }).then(result => {
-        if (result.data.hasOwnProperty("error")) {
+        console.log(result.data)
           this.setState({
-            response: result.data.error
+            punches: result.data.punches
           })
-        } else if (result.data.hasOwnProperty("success")) {
-          this.setState({
-            response: result.data.success,
-            punches: result.data.card.punches
-          })
-        } else {
-          console.log("RESULT OF UPDATED CARD:", result)
-          this.setState({
-            punches: result.data.punches,
-            response: null
-          }, ()=>{
-            console.log('special kyle', this.state)
-          })
-        }
+        // if (result.data.hasOwnProperty("error")) {
+        //   this.setState({
+        //     response: result.data.error
+        //   })
+        // } else if (result.data.hasOwnProperty("success")) {
+        //   this.setState({
+        //     response: result.data.success,
+        //     punches: this.state.restaurant.reqPunches
+        //   })
+        // } else {
+        //   console.log("BEFORE UPDATE:", this.state.punches)
+        //   console.log("BEFORE - YOU GOT:", result)
+        //   this.setState({
+        //     punches: result.data.punches,
+        //     response: null
+        //   }, () => {
+        //     console.log("AFTER UPDATE:", this.state.punches)
+        //     console.log("AFTER - YOU GOT:", result)
+        //   })
+        // }
       })
     }
 
@@ -78,6 +84,13 @@ class Card extends Component {
 
   render() {
 
+    // Declare variable that stores results 
+    // this.state.restaurant.reqPunches === this.state.punches
+    // return the message / code + button (links to the same submitHandler)
+      // else, display the current code
+
+    
+      
     var punchedArray = []
     var unPunchedArray = []
 
@@ -91,8 +104,6 @@ class Card extends Component {
       unPunchedArray.push(<div className="punch"></div>)
     }
 
-    console.log("PUNCHED", punched)
-    console.log("UNPUNCHED", unPunched)
     return (
       <div className="home-container">
         <div className="card-container">
