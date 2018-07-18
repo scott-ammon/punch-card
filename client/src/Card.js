@@ -11,7 +11,7 @@ class Card extends Component {
     super(props)
     this.state = {
       restaurant: {},
-      card: {},
+      punches: 0,
       response: "",
       rewardInput: ""
     }
@@ -28,29 +28,35 @@ class Card extends Component {
   
   handleSubmit(e) {
       e.preventDefault()
-      console.log('handleSubmit hit');
       axios.delete("/user/cards/" + this.props.match.params.id + "/" + this.props.user._id).then(result => {
-        console.log(result)
         this.props.history.push("/cards");
       })
     }
 
     punchCard(e) {
       e.preventDefault()
-      console.log(this.props.rewardInput)
       axios.put("/user/cards/" + this.props.match.params.id, {
         restaurantId: this.state.restaurant._id,
         rewardCode: this.state.rewardInput,
-        punches: this.state.card.punches
+        reqPunches: this.state.restaurant.reqPunches,
+        punches: this.state.punches
       }).then(result => {
         if (result.data.hasOwnProperty("error")) {
           this.setState({
-            response: result.data
+            response: result.data.error
+          })
+        } else if (result.data.hasOwnProperty("success")) {
+          this.setState({
+            response: result.data.success,
+            punches: result.data.card.punches
           })
         } else {
+          console.log("RESULT OF UPDATED CARD:", result)
           this.setState({
-            card: result.data,
+            punches: result.data.punches,
             response: null
+          }, ()=>{
+            console.log('special kyle', this.state)
           })
         }
       })
@@ -60,13 +66,9 @@ class Card extends Component {
       axios.post("/user/cards/" + this.props.match.params.id, {
         user: this.props.user
       }).then(card => {
-        console.log("Card is", card)
-        console.log("All Rest", this.props.restaurants)
         var restaurant = this.props.restaurants.find(restaurant => {
-          console.log(restaurant._id + "Is equal to?" + card.data[0].restaurant)
           return restaurant._id === card.data[0].restaurant
         })
-        console.log("This is restaurant", restaurant)
         this.setState({
           restaurant,
           card: card.data[0]
@@ -79,7 +81,7 @@ class Card extends Component {
     var punchedArray = []
     var unPunchedArray = []
 
-    var punched = this.state.card.punches
+    var punched = this.state.punches
     for (let i = 0; i < punched; i++) {
       punchedArray.push(<div className="punched"></div>)
     }
@@ -89,6 +91,8 @@ class Card extends Component {
       unPunchedArray.push(<div className="punch"></div>)
     }
 
+    console.log("PUNCHED", punched)
+    console.log("UNPUNCHED", unPunched)
     return (
       <div className="home-container">
         <div className="card-container">
@@ -110,7 +114,7 @@ class Card extends Component {
           <form className="removeCardButton" onSubmit={this.handleSubmit}>
             <Button type="submit" variant="contained" color="secondary" alignItems="flex-end">Remove Card</Button>
           </form>
-          <h5>{this.state.response.error}</h5>
+          <h5>{this.state.response}</h5>
       </div>
     )
   }

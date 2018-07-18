@@ -50,14 +50,35 @@ router.put("/cards/:id", (req, res) => {
   Restaurant.findOne({_id: req.body.restaurantId}, function(err, restaurant) {
     console.log("Body in finding Restaurant", req.body.rewardCode)
     if (restaurant.authenticated(req.body.rewardCode)) {
-      Card.findOneAndUpdate({_id: req.params.id}, {punches: req.body.punches + 1}, {new: true}, function(err, card) {
-        console.log(card)
+      if (req.body.punches < req.body.reqPunches) {
+        Card.findOneAndUpdate({_id: req.params.id}, {punches: req.body.punches + 1}, {new: true}, function(err, card) {
+          console.log(card)
+            if (err) {
+              console.log(err)
+            } else {
+              if (req.body.punches === req.body.reqPunches -1) {
+                res.json({
+                  success: "You have completed your card! Your Code is: 93203948",
+                  card
+                })
+              } else {
+                res.json(card)
+              }
+            }
+        })
+      } else {
+        console.log("SETTING TO 0")
+        Card.findOneAndUpdate({_id: req.params.id}, {punches: 0}, {new: true}, function(err, card) {
           if (err) {
             console.log(err)
           } else {
-            res.json(card)
+            console.log("RESETTING CARD: here is the card:", card)
+            res.json({
+              card: {punches:0}
+            })
           }
-      })
+        })
+      }
     } else {
       res.json({error: "Invalid Code"})
     }
