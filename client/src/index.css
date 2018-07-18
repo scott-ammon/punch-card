@@ -10,9 +10,8 @@ body {
   text-align: center;
 }
 
-
 #search-btn {
-	margin-left: 1em;
+  margin-left: 1em;
 }
 
 #headline {
@@ -87,7 +86,7 @@ body {
 .numberOfPunches {
   border: 1px solid black;
   border-radius: 10px;
-  width: 75vw;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
   padding-top: 1em;
@@ -158,17 +157,6 @@ body {
 
 @media (min-width: 480px) {
 
-  .numberOfPunches {
-    border: 1px solid black;
-    border-radius: 10px;
-    width: 65vw;
-    margin: 0 auto;
-    text-align: center;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    margin-bottom: 2em;
-  }
-
   .card-container {
     width: 35em;
     margin: 0 auto;
@@ -220,17 +208,6 @@ body {
 }
 
 @media (min-width: 960px) {
-
-  .numberOfPunches {
-    border: 1px solid black;
-    border-radius: 10px;
-    width: 50vw;
-    margin: 0 auto;
-    text-align: center;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    margin-bottom: 2em;
-  }
 
   .theCards {
     width: 30%;

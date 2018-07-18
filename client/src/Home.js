@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import ReactMapboxGl, { Layer, Feature, Marker, Popup } from "react-mapbox-gl";
+import ReactMapboxGl, {Marker, Popup} from "react-mapbox-gl";
 import {Link} from 'react-router-dom';
 
 class Home extends Component {
@@ -20,10 +20,12 @@ class Home extends Component {
   }
 
   render() {
+    // Initialize Mapbox map
     const Map = ReactMapboxGl({
       accessToken: this.props.mapboxKey
     })
-
+ 
+    // Create Markers and Popups to display each restaurant name and location with a link to the restaurant
     let markerArray = this.props.restaurants.map(restaurant => {
       return (<div>
               <Marker
@@ -42,6 +44,7 @@ class Home extends Component {
     return (
       <div className="home-container">
         <h4>Collect and use loyalty cards from all your favorite restaurants and food trucks!</h4>
+        {/* Commenting out the search bar until it can be implemented
         <form onSubmit={this.handleSubmit}>
           <TextField
             id="search"
@@ -52,7 +55,7 @@ class Home extends Component {
             margin="normal"
           />
           <Button id="search-btn" variant="contained" color="primary" type="submit">Search</Button>
-        </form>
+        </form> */}
         <div className="map-wrapper">
           <Map
             style="mapbox://styles/scottammon/cjjfwon001qvd2rthricow465"
