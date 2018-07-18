@@ -120,6 +120,20 @@ body {
   margin-left: 2em;
 }
 
+.restaurantLink {
+  text-decoration: none;
+}
+
+.theCards {
+  width: 70%;
+  margin: 10px auto;
+}
+
+.centerCards {
+  width: 90vw;
+  margin: 0 auto;
+}
+
 #newCard {
   margin-left: 13em;
   margin-bottom: 5em;
@@ -139,4 +153,59 @@ body {
 #restaurant-img {
   height: auto;
   border-radius: 8%;
+  width: 90vw;
+}
+
+@media (min-width: 480px) {
+
+  .numberOfPunches {
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 65vw;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin-bottom: 2em;
+  }
+
+  .card-container {
+    width: 35em;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid black;
+    margin-top: 3em;
+    padding-bottom: 2em;
+    border-radius: 20px;
+    margin-bottom: 2em;
+  }
+
+  .removeCardButton {
+    margin-left: 25em;
+  }
+
+  .theCards {
+    width: 50%;
+    margin: 10px auto;
+  }
+}
+
+@media (min-width: 960px) {
+
+  .numberOfPunches {
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 50vw;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin-bottom: 2em;
+  }
+
+  .theCards {
+    width: 30%;
+    margin: 10px auto;
+  }
+
 }
