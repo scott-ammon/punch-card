@@ -3,7 +3,7 @@ const express = require('express');
 const bp = require('body-parser');
 const mongoose = require('mongoose');
 const expressJWT = require('express-jwt');
-var Restaurant = require('../models/Restaurant');
+var Restaurant = require('./models/Restaurant');
 
 const app = express();
 
