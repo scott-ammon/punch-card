@@ -77,7 +77,7 @@ class Card extends Component {
         })
         this.setState({
           restaurant,
-          card: card.data[0]
+          punches: card.data[0].punches
         })
       })
     }
@@ -89,8 +89,6 @@ class Card extends Component {
     // return the message / code + button (links to the same submitHandler)
       // else, display the current code
 
-    
-      
     var punchedArray = []
     var unPunchedArray = []
 
@@ -104,9 +102,11 @@ class Card extends Component {
       unPunchedArray.push(<div className="punch"></div>)
     }
 
-    return (
-      <div className="home-container">
-        <div className="card-container">
+    const cardDisplay = (this.state.restaurant.reqPunches === this.state.punches) ? (
+      <div>
+        <h5>YOU CAN REDEEM YOUR CARD</h5>
+      </div>
+    ) : (<div className="card-container">
           <h1 className="restaurantName">{this.state.restaurant.name}</h1>
           <p className="reqPunches">{this.state.restaurant.reward}</p>
           <div className="numberOfPunches">
@@ -121,11 +121,31 @@ class Card extends Component {
               Redeem
             </Button>
           </form>
+        </div>)
+
+    return (
+      <div className="home-container">
+        {cardDisplay}
+        {/* <div className="card-container">
+          <h1 className="restaurantName">{this.state.restaurant.name}</h1>
+          <p className="reqPunches">{this.state.restaurant.reward}</p>
+          <div className="numberOfPunches">
+            {punchedArray}
+            {unPunchedArray}
           </div>
-          <form className="removeCardButton" onSubmit={this.handleSubmit}>
-            <Button type="submit" variant="contained" color="secondary" alignItems="flex-end">Remove Card</Button>
+          <form onSubmit={this.punchCard}>
+            <TextField
+              placeholder="enter code to punch..." id="codeInput" underlineStyle={{display: 'none'}} onChange={this.handleChange}
+            />
+            <Button type="submit" variant="contained" color="primary">
+              Redeem
+            </Button>
           </form>
-          <h5>{this.state.response}</h5>
+        </div> */}
+        <form className="removeCardButton" onSubmit={this.handleSubmit}>
+          <Button type="submit" variant="contained" color="secondary" alignItems="flex-end">Remove Card</Button>
+        </form>
+        <h5>{this.state.response}</h5>
       </div>
     )
   }
