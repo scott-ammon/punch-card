@@ -105,8 +105,16 @@ class Card extends Component {
     const cardDisplay = (this.state.restaurant.reqPunches === this.state.punches) ? (
       <div>
         <h5>YOU CAN REDEEM YOUR CARD</h5>
+        <form onSubmit={this.punchCard}>
+            <TextField
+              placeholder="enter code to punch..." id="codeInput" underlineStyle={{display: 'none'}} onChange={this.handleChange}
+            />
+            <Button type="submit" variant="contained" color="primary">
+              Redeem
+            </Button>
+          </form>
       </div>
-    ) : (<div className="card-container">
+    ) : (<div>
           <h1 className="restaurantName">{this.state.restaurant.name}</h1>
           <p className="reqPunches">{this.state.restaurant.reward}</p>
           <div className="numberOfPunches">
@@ -125,9 +133,9 @@ class Card extends Component {
 
     return (
       <div className="home-container">
-        {cardDisplay}
-        {/* <div className="card-container">
-          <h1 className="restaurantName">{this.state.restaurant.name}</h1>
+        <div className="card-container">
+          {cardDisplay}
+          {/* <h1 className="restaurantName">{this.state.restaurant.name}</h1>
           <p className="reqPunches">{this.state.restaurant.reward}</p>
           <div className="numberOfPunches">
             {punchedArray}
@@ -140,8 +148,8 @@ class Card extends Component {
             <Button type="submit" variant="contained" color="primary">
               Redeem
             </Button>
-          </form>
-        </div> */}
+          </form> */}
+        </div>
         <form className="removeCardButton" onSubmit={this.handleSubmit}>
           <Button type="submit" variant="contained" color="secondary" alignItems="flex-end">Remove Card</Button>
         </form>
