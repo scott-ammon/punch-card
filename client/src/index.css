@@ -116,7 +116,7 @@ body {
 .restaurantText {
   text-align: left;
   width: 20em;
-  margin-left: 2em;
+  margin-left: 1em;
 }
 
 .restaurantLink {
@@ -185,8 +185,8 @@ body {
 
   .restaurantText {
     text-align: left;
-    width: 20em;
-    margin-left: 10em;
+    width: 18em;
+    margin-left: 11em;
   }
 
   #newCard {
@@ -217,7 +217,7 @@ body {
   #restaurant-img {
     height: auto;
     border-radius: 8%;
-    width: 40vw;
+    width: 45vw;
   }
 
   .restaurantText {
