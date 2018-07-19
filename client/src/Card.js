@@ -41,10 +41,15 @@ class Card extends Component {
         reqPunches: this.state.restaurant.reqPunches,
         punches: this.state.punches
       }).then(result => {
-        console.log(result.data)
+        if (result.data.hasOwnProperty("error")) {
+          this.setState({
+            response: result.data.error
+          })
+        } else {
           this.setState({
             punches: result.data.punches
           })
+        }
         // if (result.data.hasOwnProperty("error")) {
         //   this.setState({
         //     response: result.data.error
