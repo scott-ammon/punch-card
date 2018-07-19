@@ -20,12 +20,14 @@ class Card extends Component {
     this.punchCard = this.punchCard.bind(this)
   }
 
+  // Sets user form input to state
   handleChange(e) {
     this.setState({
       rewardInput: e.target.value
     })
   }
   
+  // Deletes the user's card on submit
   handleSubmit(e) {
       e.preventDefault()
       axios.delete("/user/cards/" + this.props.match.params.id + "/" + this.props.user._id).then(result => {
@@ -33,6 +35,7 @@ class Card extends Component {
       })
     }
 
+    // Authenticates user code input on backend then either punches card or displays invalid msg
     punchCard(e) {
       e.preventDefault()
       axios.put("/user/cards/" + this.props.match.params.id, {
@@ -50,29 +53,9 @@ class Card extends Component {
             punches: result.data.punches
           })
         }
-        // if (result.data.hasOwnProperty("error")) {
-        //   this.setState({
-        //     response: result.data.error
-        //   })
-        // } else if (result.data.hasOwnProperty("success")) {
-        //   this.setState({
-        //     response: result.data.success,
-        //     punches: this.state.restaurant.reqPunches
-        //   })
-        // } else {
-        //   console.log("BEFORE UPDATE:", this.state.punches)
-        //   console.log("BEFORE - YOU GOT:", result)
-        //   this.setState({
-        //     punches: result.data.punches,
-        //     response: null
-        //   }, () => {
-        //     console.log("AFTER UPDATE:", this.state.punches)
-        //     console.log("AFTER - YOU GOT:", result)
-        //   })
-        // }
       })
     }
-
+    // Finds the current card and its associated restaurant and updates state on mount
     componentDidMount() {
       axios.post("/user/cards/" + this.props.match.params.id, {
         user: this.props.user
@@ -89,24 +72,22 @@ class Card extends Component {
 
   render() {
 
-    // Declare variable that stores results 
-    // this.state.restaurant.reqPunches === this.state.punches
-    // return the message / code + button (links to the same submitHandler)
-      // else, display the current code
-
     var punchedArray = []
     var unPunchedArray = []
 
+    // Renders all currently punched slots on the card
     var punched = this.state.punches
     for (let i = 0; i < punched; i++) {
       punchedArray.push(<div className="punched"></div>)
     }
 
+    // Renders all remaining unpunched slots out of the card's number of total punches needed
     var unPunched = this.state.restaurant.reqPunches - punched
     for (let i = 0; i < unPunched; i++) {
       unPunchedArray.push(<div className="punch"></div>)
     }
 
+    // Conditionally displays either the card or a redemption screen upon aquiring all punches
     const cardDisplay = (this.state.restaurant.reqPunches === this.state.punches) ? (
       <div>
         <h5>YOU CAN REDEEM YOUR CARD</h5>
@@ -140,20 +121,6 @@ class Card extends Component {
       <div className="home-container">
         <div className="card-container">
           {cardDisplay}
-          {/* <h1 className="restaurantName">{this.state.restaurant.name}</h1>
-          <p className="reqPunches">{this.state.restaurant.reward}</p>
-          <div className="numberOfPunches">
-            {punchedArray}
-            {unPunchedArray}
-          </div>
-          <form onSubmit={this.punchCard}>
-            <TextField
-              placeholder="enter code to punch..." id="codeInput" underlineStyle={{display: 'none'}} onChange={this.handleChange}
-            />
-            <Button type="submit" variant="contained" color="primary">
-              Redeem
-            </Button>
-          </form> */}
         </div>
         <form className="removeCardButton" onSubmit={this.handleSubmit}>
           <Button type="submit" variant="contained" color="secondary" alignItems="flex-end">Remove Card</Button>

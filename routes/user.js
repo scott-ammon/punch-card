@@ -30,7 +30,7 @@ router.post("/cards", (req, res) => {
     })
 })
 
-// GET - Get's a specific card from the user's card array
+// POST- Get's a specific card from the user's card array
 router.post("/cards/:id", (req, res) => {
   User.findOne({email: req.body.user.email}).populate({
     path: "cards",
@@ -40,49 +40,23 @@ router.post("/cards/:id", (req, res) => {
   })
 })
 
+// PUT - Checks user input against Restaurant code
 router.put("/cards/:id", (req, res) => {
-  // Find a restaurant by id passed in
-  // Restaurant.findOne({_id: req.body.restaurantId}, function(err, restaurant) {
-  //   if (restaurant.authenticated(req.body.rewardCode)) {
-  //     if (req.body.punches < req.body.reqPunches) {
-  //       Card.findOneAndUpdate({_id: req.params.id}, {punches: req.body.punches + 1}, {new: true}, function(err, card) {
-  //           if (err) {
-  //             console.log(err)
-  //           } else {
-  //             if (req.body.punches === req.body.reqPunches -1) {
-  //               res.json({
-  //                 success: "You have completed your card! Your Code is: 93203948",
-  //                 card
-  //               })
-  //             } else {
-  //               res.json(card)
-  //             }
-  //           }
-  //       })
-  //     } else {
-  //       Card.findOneAndUpdate({_id: req.params.id}, {punches: 0}, {new: true}, function(err, card) {
-  //         if (err) {
-  //           console.log(err)
-  //         } else {
-  //           res.json(0)
-  //         }
-  //       })
-  //     }
-  //   } else {
-  //     res.json({error: "Invalid Code"})
-  //   }
-  // })
   Restaurant.findOne({_id: req.body.restaurantId}, function(err, restaurant) {
+    // If code is correct, this punches the user's card
     if (restaurant.authenticated(req.body.rewardCode)) {
+      // Adds punch to card if the card is not full
       if (req.body.punches < req.body.reqPunches) {
         Card.findOneAndUpdate({_id: req.params.id}, {punches: req.body.punches + 1}, {new: true}, function(err, card) {
           res.json(card)
         })
+        // Resets the card if it has been fully punched
       } else {
         Card.findOneAndUpdate({_id: req.params.id}, {punches: 0}, {new: true}, function(err, card) {
             res.json(card)
         })
       }
+    // If user input failed to authenticate, sends back an invalid message
     } else {
       res.json({error: "Invalid Code"})
     }
