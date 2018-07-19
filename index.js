@@ -15,7 +15,9 @@ app.use('/user', require('./routes/user'));
 app.use('/restaurant', require('./routes/restaurant'));
 app.use('/locked', expressJWT({secret: process.env.JWT_SECRET}).unless({method: "POST"}), require('./routes/locked'));
 
-mongoose.connect('mongodb://localhost/jwtAuth');
+// mongoose.connect('mongodb://localhost/jwtAuth');
+// Changed to this line for Heroku
+mongoose.connect(process.env.MONGODB_URIg, {useMongoClient: true});
 
 // Use this for production
 app.get('*', (req, res) => {
