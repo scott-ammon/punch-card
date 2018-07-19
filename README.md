@@ -35,8 +35,10 @@ After we wireframed all of our pages and then proceeded to map out the server si
 | POST          | /auth/signup  |
 | POST          | /auth/me/from/token |
 | GET           | /restaurant     |
+| GET           | /restaurant/:id |
 | POST          | /user/cards     |
 | POST          | /user/cards/all |
+| POST          | /user/cards/:id |
 | PUT           | /user/cards/:id |
 | DELETE        | /user/cards/:id |
 
