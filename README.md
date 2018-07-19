@@ -22,7 +22,7 @@ When a user visits PunchCard they view a map on the home page that displays all 
 11. Heroku
 
 ## Approach
-The first thing that we did in our group was a appoint a git master. We all decided Scott was best suited for that position. After that our whole group got together and we started brainstorming on what kind of project we would make. A lot of the ideas were based off of what kind of API's were out there. When we decided what our idea was, the next step was to begin wireframing.
+The first thing that we did in our group was a appoint a git master. We all decided Scott was best suited for that position. After that our whole group got together and we started brainstorming on what kind of project we would make. A lot of the ideas were based off of what kind of API's were out there. When we made the final decision for our idea, the next step was to begin wireframing.
 
 ### Wireframes
 We built wireframes in Adobe XD, linked here: [wireframes](https://xd.adobe.com/view/f35c8478-fcf1-4373-5be1-50391b61f632-856d/?hints=off)
@@ -78,7 +78,7 @@ Once we got all of that initial planning done for the project, our next step was
 The main goal of the application is to allow users to put all of their restaurant punch cards together on one platform. MVP will include a main page with a map to find a restaurant, A restaurant page that will let you add their punch card to your profile, a profile page that shows all of your cards, and finally a card page that shows the whole card with punch details.
 
 ## Adding More Features
-There's still a lot more we can add to this application. Some other features will include other promotions restaurants want to give out like limited time only discounts.
+There's still a lot more we can add to this application. Some other features will include other promotions restaurants want to give out like limited time only discounts. Aside from that, here is some functionality we eventually would like to add.
 
 1. Add unique code for each punch (right now there's just one code for all punches).
 2. Let restaurants be able to add there punch card to the app by making an easy sign up form to input restaurant promotions and how many punches are needed to achieve the promotion.
