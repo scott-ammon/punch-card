@@ -4,7 +4,7 @@ const Restaurant = require('../models/Restaurant');
 const Card = require('../models/Card');
 const User = require('../models/User');
 
-// GET - Finds all cards associated with current user
+// POST - Finds all cards associated with current user
 router.post("/cards/all", (req, res) => {
   User.findOne({email: req.body.user.email}).populate("cards").exec(function(err, user) {
     res.json(user.cards);
